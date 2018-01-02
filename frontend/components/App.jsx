@@ -11,6 +11,7 @@ import {
 import NavBarContainer from './nav_bar/nav_bar_container';
 import SessionFormContainer from './session_form/session_form_container';
 import LogoutContainer from './logout/logout_container';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
@@ -19,8 +20,8 @@ const App = () => (
       <NavBarContainer />
     </header>
 
-    <Route path="/login" component={SessionFormContainer} />
-    <Route path="/signup" component={SessionFormContainer} />
+    <AuthRoute path="/login" component={SessionFormContainer} />
+    <AuthRoute path="/signup" component={SessionFormContainer} />
     <Route path="/logout" component={LogoutContainer} />
   </div>
 );
