@@ -14,11 +14,13 @@ import LogoutContainer from './logout/logout_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>
+  <div className="main-content">
     <header>
-      <h1>SoundMound</h1>
-      <NavBarContainer />
     </header>
+    <div className="frontHero">
+      <NavBarContainer />
+      <h1>SoundMound</h1>
+    </div>
 
     <AuthRoute path="/login" component={SessionFormContainer} />
     <AuthRoute path="/signup" component={SessionFormContainer} />
