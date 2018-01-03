@@ -1,3 +1,15 @@
+@import "../base/variables.scss";
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .modal-overlay {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -6,6 +18,18 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(255,255,255); /* Fallback color */
+  background-color: rgba(255,255,255,0.7); /* Black w/ opacity */
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+.session-form {
+  display: flex;
+  background-color: $white;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid $dark-gray;
+  width: 80%;
 }

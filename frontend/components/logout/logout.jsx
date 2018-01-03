@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import App from '../App';
 
 class Logout extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentWillMount() {
-    this.props.logout();
   }
 
   render() {

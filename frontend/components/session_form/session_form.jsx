@@ -9,13 +9,12 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state.user).then(() =>
-    this.props.history.push('/'));
+    this.props.action(this.state).then(this.props.closeModal);
   }
 
   linkState(field) {
     return e => {
-      this.setState({user: {[field]: e.target.value}});
+      this.setState({[field]: e.target.value});
     };
   }
 
@@ -32,23 +31,24 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const buttonText = (this.props.formType === 'login') ? "Login" : "Sign up";
+    console.log(this.props);
+    const buttonText = (this.props.formType === 'login') ?
+                        "Login" : "Sign up";
     return (
-    <div className="session-form-modal animate fadeIn">
-
+    <div className="session-form">
+      {this.renderErrors()}
       <form onSubmit={this.handleSubmit}>
-        {this.renderErrors()}
         <input type="text"
                 value={this.state.username}
                 placeholder="username"
                 onChange={this.linkState('username')}/>
 
-              <input type="password"
-                      value={this.state.password}
-                      placeholder="password"
-                      onChange={this.linkState('password')}/>
+        <input type="password"
+                value={this.state.password}
+                placeholder="password"
+                onChange={this.linkState('password')}/>
 
-        <button>{buttonText}</button>
+        <button onClick={this.handleSubmit}>{buttonText}</button>
 
       </form>
     </div>

@@ -3,10 +3,11 @@ import FormModal from './form_modal';
 import { toggleSessionModal } from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
-  return {modalStatus: {
+  return {
             modalIsOpen: state.ui.modalOpen,
-            modalType: state.ui.formType}
-  };
+            modalType: state.ui.formType
+          };
+
 };
 
 const mapDispatchToProps = dispatch => {

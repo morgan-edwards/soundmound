@@ -4,12 +4,7 @@ import SessionFormContainer from '../session_form/session_form_container';
 class FormModal extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.modalStatus;
     this.closeModal = this.closeModal.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps.modalStatus);
   }
 
   closeModal(e) {
@@ -20,13 +15,14 @@ class FormModal extends React.Component {
   }
 
   render() {
-    if (!this.state.modalIsOpen) {
+
+    if (!this.props.modalIsOpen) {
       return<div></div>;
     } else {
       return (
         <div className="modal-overlay" onClick={this.closeModal}>
           <button onClick={this.closeModal}>X</button>
-          <SessionFormContainer />
+          <SessionFormContainer formType={this.props.modalType} closeModal={this.props.toggleSessionModal} />
         </div>
       );
     }
