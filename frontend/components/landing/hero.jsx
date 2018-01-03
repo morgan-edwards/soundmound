@@ -8,12 +8,14 @@ const Hero = (props) => {
       <div className="hero-header">
         <h1>SOUNDMOUND</h1>
         <div className="session_buttons">
-          <Link to="/login">
-            <button>Sign in</button>
-          </Link>
-          <Link to="/signup">
-            <button className="orange-btn">Create account</button>
-          </Link>
+
+            <button onClick={() => props.toggleSessionModal('login')}>
+              Sign in</button>
+
+            <button className="orange-btn"
+                    onClick={() => props.toggleSessionModal('signup')}>
+                    Create account</button>
+
         </div>
       </div>
 
@@ -22,7 +24,8 @@ const Hero = (props) => {
         <p>Discover, stream, and share some real tight music on a super
           slow, ad-free, groundbreaking site</p>
         <button className="orange-btn"
-                onClick={props.toggleSessionModal}>Sign up for free</button>
+                onClick={() => props.toggleSessionModal('signup')}>
+                Sign up for free</button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import Hero from './hero';
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleSessionModal: () => dispatch(toggleSessionModal())
+    toggleSessionModal: (formType) => dispatch(toggleSessionModal(formType))
   };
 };
 
