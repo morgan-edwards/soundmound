@@ -31,24 +31,27 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const buttonText = (this.props.formType === 'login') ?
                         "Login" : "Sign up";
     return (
-    <div className="session-form">
-      {this.renderErrors()}
-      <form onSubmit={this.handleSubmit}>
+    <div className="session-form-container">
+      <form className="session-form" onSubmit={this.handleSubmit}>
         <input type="text"
                 value={this.state.username}
-                placeholder="username"
+                placeholder="username *"
                 onChange={this.linkState('username')}/>
 
-        <input type="password"
+        <input type="password *"
                 value={this.state.password}
-                placeholder="password"
+                placeholder="password *"
                 onChange={this.linkState('password')}/>
 
-        <button onClick={this.handleSubmit}>{buttonText}</button>
+        <div className="session-errors">
+          {this.renderErrors()}
+        </div>
+
+        <button className="form-button orange-btn"
+                onClick={this.handleSubmit}>{buttonText}</button>
 
       </form>
     </div>

@@ -10,6 +10,34 @@
   }
 }
 
+@keyframes bounceInDown {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
 .modal-overlay {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -19,17 +47,58 @@
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(255,255,255); /* Fallback color */
-  background-color: rgba(255,255,255,0.7); /* Black w/ opacity */
+  background-color: rgba(255,255,255,0.9); /* Black w/ opacity */
   animation-duration: 0.5s;
   animation-fill-mode: both;
   animation-name: fadeIn;
+  animation-delay: .25s;
+
+  button {
+    float: right;
+  }
+}
+
+.session-form-container {
+  color: $white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  margin: 76px auto;
+  padding: 20px;
+  width: 450px;
+  height: 300px;
 }
 
 .session-form {
-  display: flex;
-  background-color: $white;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid $dark-gray;
-  width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+
+  input {
+    color: $dark-gray;
+    font-size: 18;
+    line-height: 24px;
+    padding: 7px 8px;
+    border-radius: 5px;
+    border: 1px solid $light-gray;
+    width: 100%;
+  }
+}
+
+.form-button {
+  font-size: 16px;
+  text-align: center;
+  line-height: 18px;
+  padding: 10px 15px;
+  height: 40px;
+  width: 100%;
+}
+
+.session-errors {
+  color: #f50;
+  padding: 6px 0 5px;
+  transition: transform .12s,padding .12s,min-height .12s,opacity .2s;
 }
