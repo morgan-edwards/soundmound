@@ -41,7 +41,7 @@ class SessionForm extends React.Component {
                 placeholder="username *"
                 onChange={this.linkState('username')}/>
 
-        <input type="password *"
+        <input type="password"
                 value={this.state.password}
                 placeholder="password *"
                 onChange={this.linkState('password')}/>

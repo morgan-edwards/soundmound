@@ -5,7 +5,7 @@ import LogoutContainer from '../logout/logout_container';
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="main-container">
       <NavBarContainer />
     </div>
 
