@@ -34,7 +34,7 @@ class SessionForm extends React.Component {
   render() {
     const buttonText = (this.props.formType === 'login') ? "Login" : "Sign up";
     return (
-    <div className="session-form-container">
+    <div className="session-form-modal animate fadeIn">
 
       <form onSubmit={this.handleSubmit}>
         {this.renderErrors()}

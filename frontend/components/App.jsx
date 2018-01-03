@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import NavBarContainer from './nav_bar/nav_bar_container';
+import Hero from './landing/hero';
 import SessionFormContainer from './session_form/session_form_container';
 import LogoutContainer from './logout/logout_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
@@ -17,10 +18,7 @@ const App = () => (
   <div className="main-content">
     <header>
     </header>
-    <div className="frontHero">
-      <NavBarContainer />
-      <h1>SoundMound</h1>
-    </div>
+    <Hero />
 
     <AuthRoute path="/login" component={SessionFormContainer} />
     <AuthRoute path="/signup" component={SessionFormContainer} />
