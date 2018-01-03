@@ -10,7 +10,7 @@ import {
 
 import NavBarContainer from './nav_bar/nav_bar_container';
 import Hero from './landing/hero';
-import SessionFormContainer from './session_form/session_form_container';
+import FormModal from './session_modal/form_modal_container';
 import LogoutContainer from './logout/logout_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
@@ -19,9 +19,7 @@ const App = () => (
     <header>
     </header>
     <Hero />
-
-    <AuthRoute path="/login" component={SessionFormContainer} />
-    <AuthRoute path="/signup" component={SessionFormContainer} />
+    <FormModal />
     <Route path="/logout" component={LogoutContainer} />
   </div>
 );

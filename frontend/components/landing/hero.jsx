@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Modal from '../general/modal';
 
-const Hero = () => {
-  const modal = <Modal />;
+const Hero = (props) => {
   return (
     <div className="front-hero">
 
@@ -19,14 +17,13 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="animated fadeIn hero-content">
+      <div className="hero-content">
         <h1>Connect on SoundMound</h1>
-        <p>Discover, stream, and share some real tight music on a super slow, ad-free, groundbreaking site</p>
-        <Link to="/signup">
-          <button className="orange-btn">Sign up for free</button>
-        </Link>
+        <p>Discover, stream, and share some real tight music on a super
+          slow, ad-free, groundbreaking site</p>
+        <button className="orange-btn"
+                onClick={props.toggleSessionModal}>Sign up for free</button>
       </div>
-      {modal}
     </div>
   );
 };

@@ -9,13 +9,13 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state).then(() =>
+    this.props.action(this.state.user).then(() =>
     this.props.history.push('/'));
   }
 
   linkState(field) {
     return e => {
-      this.setState({[field]: e.target.value});
+      this.setState({user: {[field]: e.target.value}});
     };
   }
 
@@ -40,11 +40,13 @@ class SessionForm extends React.Component {
         {this.renderErrors()}
         <input type="text"
                 value={this.state.username}
+                placeholder="username"
                 onChange={this.linkState('username')}/>
 
               <input type="password"
-                value={this.state.password}
-                onChange={this.linkState('password')}/>
+                      value={this.state.password}
+                      placeholder="password"
+                      onChange={this.linkState('password')}/>
 
         <button>{buttonText}</button>
 
