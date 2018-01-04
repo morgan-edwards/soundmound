@@ -11,7 +11,7 @@ require 'faker'
 User.destroy_all
 Song.destroy_all
 
-25.times do |idx|
+25.times do
   username = Faker::Kpop.girl_groups
   user = User.find_by(username: username)
   if !user
