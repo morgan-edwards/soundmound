@@ -15,7 +15,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = (props) => {
   return (
-    <div className="main-content">
+    <div className="app-content">
 
       <Route exact path="/" render={() => (
         (props.loggedIn) ?
