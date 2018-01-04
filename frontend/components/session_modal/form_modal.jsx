@@ -21,7 +21,10 @@ class FormModal extends React.Component {
     } else {
       return (
         <div className="modal-overlay" onClick={this.closeModal}>
-          <button onClick={this.closeModal}>X</button>
+          <button onClick={this.closeModal}
+                  className="close-button">
+            <i onClick={this.closeModal} className="fa fa-times fa-lg" aria-hidden="true"></i>
+          </button>
           <SessionFormContainer formType={this.props.modalType} closeModal={this.props.toggleSessionModal} />
         </div>
       );

@@ -53,8 +53,18 @@
   animation-name: fadeIn;
   animation-delay: .25s;
 
-  button {
+  .close-button {
     float: right;
+    padding: 20px;
+    height: 46px;
+    width: 46px;
+    border: none;
+
+    .fa-times {
+      font-size: 2.3em;
+      height: 40px;
+      width:40px;
+    }
   }
 }
 

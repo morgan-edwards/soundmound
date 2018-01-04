@@ -3,10 +3,9 @@ import React from 'react';
 const MainContainer = () => {
   return (
     <div className="main-container">
-      <div main>
-
+      <div className="main-content">
+        <h1>APP COMPONENTS GO HERE</h1>
       </div>
-      <h1>APP COMPONENTS GO HERE</h1>
     </div>
   );
 };

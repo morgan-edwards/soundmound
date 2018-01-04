@@ -1,9 +1,13 @@
 @import "../base/variables.scss";
 
+.animate {
+  
+}
+
 .main-content {
-  width: 1180px;
-  padding: 0 30px;
-  margin: auto;
+  width: 90%;
+  min-width: 900px;
+  margin: 0 auto;
   font-family: $font-stack;
 }
 

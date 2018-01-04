@@ -9,7 +9,7 @@ const NavBar = ({ currentUser, logout, history }) => {
   };
   return (
     <div className="navbar-container">
-      <nav className="navbar-content">
+      <nav className="navbar-content main-content">
         <img src="https://i1.sndcdn.com/avatars-000147958145-wf0qkm-t50x50.jpg" alt="User Image"/>
         <h1>{`Hi`}</h1>
         <button onClick={logoutRedirect}>Sign out</button>
