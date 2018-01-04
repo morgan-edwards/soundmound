@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import MainContent from './main_content';
+import MusicIndex from './music_index';
 
 const mapStateToProps = state => {
   const loggedIn = Boolean(state.session.currentUser);
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainContent);
+)(MusicIndex);
