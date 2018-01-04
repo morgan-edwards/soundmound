@@ -1,46 +1,27 @@
 import * as SongAPI from '../util/song_api_util';
 
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const RECEIVE_SONGS = 'RECEIVE_USER_SONGS';
+export const RECEIVE_SONG_ERRORS = 'RECEIVE_SONG_ERRORS'
 
-export const receiveCurrentUser = currentUser => {
+export const receiveSongs = songs => {
   return {
-    type: RECEIVE_CURRENT_USER,
-    currentUser
+    type: RECEIVE_SONGS,
+    songs
   };
 };
 
-export const receiveSessionErrors = errors => {
+export const receiveSongErrors = errors => {
   return {
-    type: RECEIVE_SESSION_ERRORS,
+    type: RECEIVE_SONGS,
     errors
   };
 };
 
-export const signup = user => dispatch => {
+export const getUserSongs = userId => dispatch => {
   return (
-    SessionAPI.signup(user).then(user => (
-      dispatch(receiveCurrentUser(user))), err => (
-        dispatch(receiveSessionErrors(err.responseJSON))
-    ))
-  );
-};
-
-export const login = user => dispatch => {
-  return (
-    SessionAPI.login(user).then(user => (
-      dispatch(receiveCurrentUser(user))), err => (
-        dispatch(receiveSessionErrors(err.responseJSON))
-    ))
-  );
-};
-
-
-export const logout = () => dispatch => {
-  return (
-    SessionAPI.logout().then(() => (
-      dispatch(receiveCurrentUser(null))), err => (
-        dispatch(receiveSessionErrors(err.responseJSON))
+    SongAPI.fetchUserSongs(userId).then((songs) => (
+      dispatch(receiveSongs(songs))), err => (
+        dispatch(receiveSongErrors(err.responseJSON))
     ))
   );
 };
