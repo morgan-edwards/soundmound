@@ -6,6 +6,7 @@ import configureStore from './store/store.js';
 // Testing imports
 import * as SessionAPI from './util/session_api_util';
 import * as UserAPI from './util/user_api_util';
+import * as UserAction from './actions/user_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -21,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.login = SessionAPI.login;
   window.logout = SessionAPI.logout;
   window.signup = SessionAPI.signup;
-  window.fetchUser = UserAPI.fetchUser;
+  window.fetchUser = UserAction.fetchUser;
+  window.apiFetchUser = UserAPI.fetchUser;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //End of testing assignments
