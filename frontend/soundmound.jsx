@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import Root from './components/root'
 import configureStore from './store/store.js';
 // Testing imports
-import * as API from './util/session_api_util'
+import * as SessionAPI from './util/session_api_util';
+import * as UserAPI from './util/user_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -17,9 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   //Testing assignments
-  window.login = API.login;
-  window.logout = API.logout;
-  window.signup = API.signup;
+  window.login = SessionAPI.login;
+  window.logout = SessionAPI.logout;
+  window.signup = SessionAPI.signup;
+  window.fetchUser = UserAPI.fetchUser;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //End of testing assignments

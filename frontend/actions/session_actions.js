@@ -20,7 +20,7 @@ export const receiveSessionErrors = errors => {
 export const signup = user => dispatch => {
   return (
     SessionAPI.signup(user).then(user => (
-      dispatch(receiveCurrentUser(user))), err => (
+      dispatch(receiveCurrentUser(user.user))), err => (
         dispatch(receiveSessionErrors(err.responseJSON))
     ))
   );
@@ -29,7 +29,7 @@ export const signup = user => dispatch => {
 export const login = user => dispatch => {
   return (
     SessionAPI.login(user).then(user => (
-      dispatch(receiveCurrentUser(user))), err => (
+      dispatch(receiveCurrentUser(user.user))), err => (
         dispatch(receiveSessionErrors(err.responseJSON))
     ))
   );
