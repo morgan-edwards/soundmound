@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import Dashboard from './dashboard';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const content = ownProps.location.pathname.slice(1);
   const loggedIn = Boolean(state.session.currentUser);
-  return { loggedIn };
+  return { loggedIn, content };
 };
 
 const mapDispatchToProps = (dispatch) => {

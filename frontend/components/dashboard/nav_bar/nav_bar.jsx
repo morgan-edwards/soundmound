@@ -8,7 +8,7 @@ const NavBar = ({ currentUser, logout, history }) => {
     );
   };
   return (
-    <div className="navbar-container flex-nav">
+    <div className="navbar-container">
       <div className='navbar-content flex-nav'>
 
         <div className="navbar-left flex-nav">

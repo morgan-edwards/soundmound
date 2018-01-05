@@ -6,7 +6,7 @@ import MainContentContainer from './main_content/main_content_container';
 import UserProfileContainer from './main_content/user_profile_container';
 import PlayerContainer from './player/player_container';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
     <div>
       <NavBarContainer />

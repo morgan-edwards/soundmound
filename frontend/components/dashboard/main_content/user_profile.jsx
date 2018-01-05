@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class UserProfile extends React.Component {
   componentDidMount() {
@@ -13,8 +13,6 @@ class UserProfile extends React.Component {
       this.props.fetchUser(nextProps.userId);
     }
   }
-
-
 
   render() {
     if (!this.props.user) {
@@ -31,7 +29,7 @@ class UserProfile extends React.Component {
             <ul>
               {songs}
             </ul>
-            <Link to={`/artists/${this.props.user.id + 1}`}>Next</Link>
+            <Link to={`/${this.props.user.id + 1}`}>Next</Link>
           </div>
       );
     }
@@ -39,4 +37,4 @@ class UserProfile extends React.Component {
 }
 
 
-export default UserProfile;
+export default withRouter(UserProfile);
