@@ -23,10 +23,14 @@ class UserProfile extends React.Component {
         </div>
       );
     } else {
-      return (
-        <div className="music-list">
-          <h1>{this.props.user.username}</h1>
-        </div>
+        const songs = this.props.songs.map(song => song.title);
+        return (
+          <div className="music-list">
+            <h1>{this.props.user.username}</h1>
+            <ul>
+              {songs}
+            </ul>
+          </div>
       );
     }
   }
