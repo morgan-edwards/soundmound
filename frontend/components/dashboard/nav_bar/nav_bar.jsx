@@ -1,26 +1,55 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const NavBar = ({ currentUser, logout, history }) => {
+const NavBar = (props) => {
+
+  const { currentUser,
+          logout,
+          history,
+          status,
+          login,
+          signup} = props;
+
   const logoutRedirect = () => {
     return (
       logout().then(() => history.push("/logout"))
     );
   };
+
+  const logged_in = (
+    <div>Logged In</div>
+  );
+
+  const logged_out = (
+    <div>Logged Out</div>
+  )
   return (
     <div className="navbar-container">
       <div className='navbar-content flex-nav'>
 
-        <div className="navbar-left flex-nav">
-          <div className="navbar-logo">
-          </div>
-          <nav className="left-nav flex-nav">
-            <ul className="flex-nav">
-              <li>Home</li>
-              <li>Collection</li>
-            </ul>
-          </nav>
-        </div>
+        <nav className="navbar-left flex-nav">
+
+          <button className="navbar-logo"
+                  onClick={() => history.push("/")}>
+              <i className="fa fa-cloud" aria-hidden="true" />
+          </button>
+
+          <ul className="nav-links-left">
+            <li>
+              <NavLink to="/"
+                activeClassName="selected">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={`/${currentUser.id}`}
+                activeClassName="selected">
+                Collection
+              </NavLink>
+            </li>
+          </ul>
+
+        </nav>
 
         <div className="navbar-middle flex-nav">
           <form className="navbar-search">
@@ -33,19 +62,20 @@ const NavBar = ({ currentUser, logout, history }) => {
           </form>
         </div>
 
-        <div className="navbar-right flex-nav">
-          <div className="navbar-upload">
-            <span className="navbar-button">Upload</span>
-          </div>
-          <div className="navbar-user flex-nav">
+        <nav className="navbar-right flex-nav">
+          <NavLink to={`/upload`}
+            activeClassName="selected">
+            Upload
+          </NavLink>
+          <NavLink to={`/upload`}
+            activeClassName="selected">
             <img src="https://i1.sndcdn.com/avatars-000147958145-wf0qkm-t50x50.jpg" alt="User Image"/>
-            <h1>{`Hi, currentUser`}</h1>
-            <button onClick={logoutRedirect}>Sign out</button>
-          </div>
+            {`${currentUser.username}`}
+          </NavLink>
+          <button onClick={logoutRedirect}>Sign out</button>
+        </nav>
 
-        </div>
       </div>
-
     </div>
 
   );

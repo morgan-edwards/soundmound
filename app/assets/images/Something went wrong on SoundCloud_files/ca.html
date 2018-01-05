@@ -1,0 +1,127 @@
+
+<!-- saved from url=(0511)https://20731594p.rfihub.com/ca.html?rfiidc=973692325921418824&rfiaid=65f5083fb7464127bd95dee8981fa70e&ver=9&rb=25875&ca=20731594&_o=25875&_t=20731594&pagename=null&subtype=free&signin=null&market=US&pe=https%3A%2F%2F5352434.fls.doubleclick.net%2Factivityi%3Bdc_pre%3DCKT168GbwdgCFdYENwodJ_QFlw%3Bsrc%3D5352434%3Btype%3Dscacc0%3Bcat%3Dunive0%3Bu2%3DUS%3Bu3%3Dfree%3Bord%3D1734786239129%3Bgtm%3DGbe%3B%7Eoref%3Dhttps%253A%252F%252Fsoundcloud.com%252Floout%3F&pf=https%3A%2F%2Fsoundcloud.com%2F&ra=624786366410973 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body onload="rfiFirePixels()" marginwidth="0" marginheight="0">
+<script type="text/javascript">
+
+window.rfiEventHandler = function(obj, type, handler) {
+    if (obj.addEventListener) {
+        obj.addEventListener(type, handler, false);
+    } else if (obj.attachEvent) {
+        obj.attachEvent('on' + type, handler);
+    }
+    obj['on' + type] = handler;
+};
+
+window.rfiFirePixels = function() {
+    var data = new Object();
+    var timeout = 15000, collectStats = !0, statsDone = !1;
+    var pixels = [{"b":57419,"s":"https://trc.taboola.com/sg/rocketfuel-network/1/rtb-h/?taboola_hm=973692325921418824"}];
+    var fbPixels = [
+        
+    ];
+    var additionalHtml = "<img height=\"1\" width=\"1\" border=\"0\" alt=\"\" style=\"display:none\" src=\"https:\/\/www.facebook.com\/tr?id=576069935914642&ev=PixelInitialized&ts=1515168768761&cd[aid]=20731594\" \/>\n";
+    var pixelId = 20731594;
+    var debugInfo = null;
+    var total = additionalHtml !== "" ? 1 : 0;
+    var timer = null;
+    pixels = pixels || [];
+    pixels = pixels.concat(fbPixels);
+    data.id = "25875,20731594,3999a2dc2e3dd5004e1ca55a19f3a8bf";
+    data.saveUuid = !1;
+
+    var sendMsg = function(type, data) {
+        var msg = new Object();
+        msg.type = type;
+        msg.id = pixelId;
+        if (data != null) {
+            msg.data = data;
+        }
+        window.parent.postMessage(msg, '*');
+    };
+
+    if (debugInfo != null) {
+        var inIframe = (function() {
+            try {
+                return window.self !== window.top;
+            } catch (e) {
+                return true;
+            }
+        })();
+
+        if (!inIframe) {
+            console.log(JSON.stringify(debugInfo));
+        } else {
+            sendMsg(3, debugInfo);
+        }
+    }
+
+    if (additionalHtml !== "") {
+        var d = document.createElement("div");
+        d.id = "rfiAddH";
+        d.innerHTML = additionalHtml;
+        document.body.appendChild(d);
+    }
+
+    if (collectStats) {
+        data.stats = new Object();
+        for (i in pixels) {
+            data.stats[pixels[i].b] = "";
+        }
+    }
+
+    var recordTime = function(elem, type) {
+        if (collectStats) {
+            data.stats[elem.elemId] = (new Date().getTime() - elem.initTime) + "," + type;
+        }
+        total--;
+        if (total <= 0) {
+            sendStats();
+            sendMsg(1, data);
+            timer && clearTimeout(timer);
+        }
+    };
+
+    for (i in pixels) {
+        var img = document.createElement('IMG');
+        img.onload = function() {
+            recordTime(this, 1);
+        };
+        img.onerror = function() {
+            recordTime(this, 2);
+        };
+        img.onabort = function() {
+            recordTime(this, 3);
+        };
+        img.elemId = pixels[i].b;
+        img.src = pixels[i].s;
+        var t = new Date().getTime();
+        img.initTime = t;
+        document.body.appendChild(img);
+        total++;
+    }
+
+    var sendStats = function() {
+        sendMsg(2, data);
+    };
+
+    timer = setTimeout(function() {
+        sendStats();
+        sendMsg(1, data);
+        timer = null;
+    }, timeout);
+
+    var unloadEventHandler = function(event) {
+        if (collectStats && !statsDone) {
+            sendStats();
+            statsDone = !0;
+        }
+    };
+
+    rfiEventHandler(window, "unload", unloadEventHandler);
+    rfiEventHandler(window, "beforeunload", unloadEventHandler);
+};
+</script>
+
+
+<div id="rfiAddH"><img height="1" width="1" border="0" alt="" style="display:none" src="./tr">
+</div><img src="./saved_resource(1)"></body></html>
