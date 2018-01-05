@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MusicIndex extends React.Component {
+class Stream extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,4 +15,4 @@ class MusicIndex extends React.Component {
 }
 
 
-export default MusicIndex;
+export default Stream;

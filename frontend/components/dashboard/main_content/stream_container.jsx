@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import MusicIndex from './music_index';
+import Stream from './stream';
 import { fetchUser, fetchFollows } from '../../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MusicIndex);
+)(Stream);

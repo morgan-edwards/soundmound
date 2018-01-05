@@ -19,9 +19,7 @@ const App = (props) => {
     <div className="app-content">
       <Switch>
         <Route exact path="/" component={HeroContainer} />
-        <Route path="/stream" component={DashboardContainer} />
-        <Route path="/logout" component={DashboardContainer} />
-        <Route path="/:userId" commponent={DashboardContainer} />
+        <Route path="/" component={DashboardContainer} />
       </Switch>
       <FormModalContainer />
     </div>
