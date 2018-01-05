@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class UserProfile extends React.Component {
   componentDidMount() {
@@ -23,13 +24,14 @@ class UserProfile extends React.Component {
         </div>
       );
     } else {
-        const songs = this.props.songs.map(song => song.title);
+        const songs = this.props.songs.map(song => <li>{song.title}</li>);
         return (
           <div className="music-list">
             <h1>{this.props.user.username}</h1>
             <ul>
               {songs}
             </ul>
+            <Link to={`/artists/${this.props.user.id + 1}`}>Next</Link>
           </div>
       );
     }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MusicIndex from './music_index';
-import { fetchUser, fetchFollows } from '../../../../actions/user_actions';
+import { fetchUser, fetchFollows } from '../../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const indexType = ownProps.indexType;

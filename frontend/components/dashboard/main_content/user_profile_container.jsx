@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import UserProfile from './user_profile';
-import { fetchUser } from '../../../../actions/user_actions';
-import { userSongs } from '../../../../reducers/selectors';
+import { fetchUser } from '../../../actions/user_actions';
+import { userSongs } from '../../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.match.params.userId;
