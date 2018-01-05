@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import UserNavBar from './user_nav_bar';
+import GuestNavBar from './guest_nav_bar';
 
 
 const NavBar = (props) => {
@@ -10,18 +11,14 @@ const NavBar = (props) => {
           history,
           status,
           login,
-          signup} = props;
+          signup,
+          toggleSessionModal
+          } = props;
 
   if (status === "logged_in") {
-    return <UserNavBar props={{logout, history, currentUser}}/>
+    return <UserNavBar props={{logout, history, currentUser}} />;
   } else {
-    return (
-      <div className="navbar-container">
-        <div className='navbar-content flex-nav'>
-          <h1>Logged Out</h1>
-        </div>
-      </div>
-    );
+    return <GuestNavBar props={{history, login, signup, toggleSessionModal}} />;
   }
 };
 
