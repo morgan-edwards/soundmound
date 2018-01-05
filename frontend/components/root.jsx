@@ -13,6 +13,7 @@ const Root = ({ store }) => (
       <div>
         <App />
         <Route path="/stream" component={DashboardContainer} />
+        <Route path="/artists" component={DashboardContainer}/>
         <Route path="/logout" component={LogoutContainer} />
       </div>
     </HashRouter>
