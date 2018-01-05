@@ -11,10 +11,12 @@ require 'faker'
 User.destroy_all
 Song.destroy_all
 
+demo_user = User.create!(username: 'demo', password: 'password')
+usernames = []
 25.times do
   username = Faker::Kpop.girl_groups
-  user = User.find_by(username: username)
-  if !user
+  usernames << username
+  unless usernames.include?(username)
     User.create!(username: Faker::Kpop.girl_groups, password: Faker::Internet.password(10))
   end
 end
