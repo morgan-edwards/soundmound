@@ -14,12 +14,22 @@ const NavBar = (props) => {
           signup,
           toggleSessionModal
           } = props;
-
+  let navbar;
   if (status === "logged_in") {
-    return <UserNavBar props={{logout, history, currentUser}} />;
+    navbar = <UserNavBar props={{logout, history, currentUser}} />;
   } else {
-    return <GuestNavBar props={{history, login, signup, toggleSessionModal}} />;
+    navbar = <GuestNavBar props={{history, login, signup, toggleSessionModal}} />;
   }
+
+  return (
+    <div className="navbar-container">
+      <div className='app-content'>
+        {navbar}
+      </div>
+    </div>
+  );
 };
+
+
 
 export default NavBar;

@@ -20,9 +20,8 @@ const sessionReducer = (state = _nullUser, action) => {
       currentUser = action.currentUser;
       return merge({}, { currentUser });
     case RECEIVE_USER:
-      debugger
       if (state.currentUser.id === action.user.id) {
-        currentUser = action.user
+        currentUser = action.user;
         return merge({}, { currentUser });
       }
       break;
