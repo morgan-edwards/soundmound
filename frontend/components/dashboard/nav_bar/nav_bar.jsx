@@ -7,6 +7,7 @@ import GuestNavBar from './guest_nav_bar';
 const NavBar = (props) => {
 
   const { currentUser,
+          fetchUser,
           logout,
           history,
           status,
@@ -16,7 +17,7 @@ const NavBar = (props) => {
           } = props;
   let navbar;
   if (status === "logged_in") {
-    navbar = <UserNavBar props={{logout, history, currentUser}} />;
+    navbar = <UserNavBar props={{logout, history, currentUser, fetchUser}} />;
   } else {
     navbar = <GuestNavBar props={{history, login, signup, toggleSessionModal}} />;
   }

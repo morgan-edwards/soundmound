@@ -30,6 +30,10 @@ gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails'
 gem 'faker'
+#Use aws for filehosting
+gem 'paperclip', '~> 5.1'
+gem 'aws-sdk', '< 3.0'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

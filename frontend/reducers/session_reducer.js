@@ -23,8 +23,9 @@ const sessionReducer = (state = _nullUser, action) => {
       if (state.currentUser.id === action.user.id) {
         currentUser = action.user;
         return merge({}, { currentUser });
+      } else {
+        return state;
       }
-      break;
     default:
       return state;
   }

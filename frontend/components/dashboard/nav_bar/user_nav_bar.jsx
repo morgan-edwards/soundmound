@@ -4,8 +4,14 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 class UserNavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.props;
     this.logoutRedirect = this.logoutRedirect.bind(this);
+  }
+
+  componentDidMount() {
+    const currentUser = this.props.props.currentUser;
+    if (!currentUser.imageUrl) {
+      this.props.props.fetchUser(currentUser.id);
+    }
   }
 
   logoutRedirect() {
@@ -15,7 +21,7 @@ class UserNavBar extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.state;
+    const { currentUser } = this.props.props;
 
     return (
       <div className="navbar-content">
@@ -64,7 +70,7 @@ class UserNavBar extends React.Component {
             </li>
             <li>
               <button className="navbar-user-btn">
-                <img src="https://i1.sndcdn.com/avatars-000147958145-wf0qkm-t50x50.jpg" alt="User Image"/>
+                <img src={currentUser.imageUrl} />
                 {`${currentUser.username}`}
                 <span className="dropdown-icon">
                   <i className="fa fa-chevron-down" aria-hidden="true"></i>

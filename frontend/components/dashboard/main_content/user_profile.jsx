@@ -26,6 +26,7 @@ class UserProfile extends React.Component {
         return (
           <div className="music-list">
             <h1>{this.props.user.username}</h1>
+            <img style={{width: 400}} src={this.props.user.imageUrl} />
             <ul>
               {songs}
             </ul>

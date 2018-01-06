@@ -9,6 +9,7 @@ followee_ids = user_followees.map(&:id)
 
 json.user do
   json.partial! '/api/users/user', user: @user
+  json.imageUrl asset_path(@user.image.url)
   json.songIds song_ids
   json.followerIds follower_ids
   json.followeeIds followee_ids
