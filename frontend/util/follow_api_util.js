@@ -11,8 +11,8 @@ export const follow = follow => {
 export const unfollow = follow => {
   return (
     $.ajax({
-      url: 'api/follows/',
-      method: 'DELETE',
+      url: 'api/unfollow',
+      method: 'POST',
       data: { follow }
     })
   );

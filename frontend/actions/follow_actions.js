@@ -1,4 +1,4 @@
-import * as FollowAPI from '../follow_api_util';
+import * as FollowAPI from '../util/follow_api_util';
 
 export const RECEIVE_FOLLOW = 'RECEIVE_FOLLOW';
 export const REMOVE_FOLLOW = 'REMOVE_FOLLOW';
@@ -20,7 +20,7 @@ export const removeFollow = follow => {
 export const follow = (follower_id, followee_id) => dispatch => {
   const follow = {follower_id, followee_id};
   return (
-    FollowAPI.follow(follow).then(follow => (
+    FollowAPI.follow(follow).then(() => (
       dispatch(receiveFollow(follow))))
   );
 };

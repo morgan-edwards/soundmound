@@ -1,13 +1,11 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import App from '../App';
 
-class Logout extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+const Logout = (props) => {
+  if (props.logged_in) {
+    return <Redirect to="/" />;
+  } else {
     return(
       <div className="logout-splash">
         <h1>You are now logged out.</h1>
@@ -15,6 +13,6 @@ class Logout extends React.Component {
       </div>
     );
   }
-}
+};
 
 export default Logout;

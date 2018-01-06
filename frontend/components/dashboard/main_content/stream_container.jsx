@@ -2,15 +2,15 @@ import { connect } from 'react-redux';
 import Stream from './stream';
 import { fetchUser, fetchFollows } from '../../../actions/user_actions';
 
-const mapStateToProps = (state, ownProps) => {
-  const indexType = ownProps.indexType;
-  const loggedIn = Boolean(state.session.currentUser);
+const mapStateToProps = state => {
+  const currentUser = state.session.currentUser;
 
-  return {loggedIn, indexType};
+  return {currentUser};
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
   };
 };
 

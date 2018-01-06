@@ -6,6 +6,8 @@ import configureStore from './store/store.js';
 // Testing imports
 import * as SessionAPI from './util/session_api_util';
 import * as UserAPI from './util/user_api_util';
+import * as FollowAPI from './util/follow_api_util';
+import * as FollowAction from './actions/follow_actions';
 import * as UserAction from './actions/user_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = SessionAPI.signup;
   window.fetchUser = UserAction.fetchUser;
   window.apiFetchUser = UserAPI.fetchUser;
+  window.follow = FollowAPI.follow;
+  window.unfollow = FollowAPI.unfollow;
+  window.follow = FollowAction.follow;
+  window.unfollow = FollowAction.unfollow;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //End of testing assignments

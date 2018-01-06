@@ -5,6 +5,12 @@ class Stream extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    if (!this.props.currentUser.followerIds) {
+      this.props.fetchUser(this.props.currentUser.id);
+    }
+  }
+
   render() {
     return (
       <div className="music-list">

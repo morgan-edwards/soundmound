@@ -21,21 +21,24 @@ class User < ApplicationRecord
     class_name: 'Song',
     foreign_key: 'user_id'
 
-  has_many :follows,
+  has_many :follows_as_follower,
+    dependent: :destroy,
+    class_name: 'Follow',
+    foreign_key: 'follower_id'
+
+  has_many :follows_as_followee,
     dependent: :destroy,
     class_name: 'Follow',
     foreign_key: 'followee_id'
 
-  has_many :follows,
-      dependent: :destroy,
-      class_name: 'Follow',
-      foreign_key: 'follower_id'
-
   has_many :followers,
-    through: :follows
+    through: :follows_as_followee,
+    source: :follower
+
 
   has_many :followees,
-    through: :follows
+    through: :follows_as_follower,
+    source: :followee
 
   attr_reader :password
 
