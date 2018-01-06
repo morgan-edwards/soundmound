@@ -16,12 +16,12 @@ class UserNavBar extends React.Component {
 
   logoutRedirect() {
     return (
-      this.state.logout().then(() => this.state.history.push("/logout"))
+      this.props.props.logout().then(() => this.props.props.history.push("/logout"))
     );
   }
 
   render() {
-    const { currentUser } = this.props.props;
+    const { currentUser, logoutRedirect } = this.props.props;
 
     return (
       <div className="navbar-content">
