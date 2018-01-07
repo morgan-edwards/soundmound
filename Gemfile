@@ -31,8 +31,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry-rails'
 gem 'faker'
 #Use aws for filehosting
-gem 'paperclip', '~> 5.1'
+gem 'paperclip', '~> 5.0.0'
 gem 'aws-sdk', '< 3.0'
+gem 'figaro'
 
 
 # Use Capistrano for deployment
