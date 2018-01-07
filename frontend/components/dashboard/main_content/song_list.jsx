@@ -8,7 +8,6 @@ const SongList = (props) => {
 
   return (
     <div className="song-list">
-      <h1>{`${props.user.username}'s song List here!`}</h1>
       <ul>
         {songs}
       </ul>

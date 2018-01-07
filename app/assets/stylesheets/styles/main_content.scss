@@ -51,3 +51,46 @@
   color: white;
   padding: 0 7px;
 }
+
+.song-list {
+  border-right: 1px solid $lightest-gray;
+}
+
+.song-list-item {
+  display: flex;
+  padding: 23px 30px;
+}
+
+.song-list-artwork {
+  height: 160px;
+  width: 160px;
+  margin-right: 20px;
+}
+
+.song-list-details {
+
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+}
+
+.list-play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: $orange;
+  border: none;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  padding: 0;
+  margin: 0 6px 0 0;
+}
+
+.light-row {
+  font-size: 12px;
+  color: $semi-light-gray;
+}
