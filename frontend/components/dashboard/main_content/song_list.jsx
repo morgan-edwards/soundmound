@@ -2,7 +2,6 @@ import React from 'react';
 import SongListItem from './song_list_item';
 
 const SongList = (props) => {
-  debugger
   const songs = props.songs.map(song => (
     <SongListItem key={song.id} song={song} />
   ));

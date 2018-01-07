@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SongListItem = ({song}) => {
-  debugger
   return (
     <li key={song.id}
       className="song-list-item">

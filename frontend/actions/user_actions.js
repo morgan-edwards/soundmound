@@ -5,7 +5,6 @@ export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 
 export const receiveUser = payload => {
-  debugger
   return {
     type: RECEIVE_USER,
     user: payload.user,
