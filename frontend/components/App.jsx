@@ -16,7 +16,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = (props) => {
   return(
-    <div className="app-content">
+    <div>
       <Switch>
         <Route exact path="/" component={HeroContainer} />
         <Route path="/" component={DashboardContainer} />

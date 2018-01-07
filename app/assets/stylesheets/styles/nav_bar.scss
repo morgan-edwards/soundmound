@@ -1,20 +1,23 @@
 @import "base/variables.scss";
 
 .navbar-container {
-  position: absolute;
-  right: 0;
-  top: 0;
-  left: 0;
   font-size: 14px;
   color: $light-gray;
   background-color: $dark-gray;
   height: 45px;
+  font-family: $font-stack;
 
   img {
     border-radius: 50%;
     width: 25px;
     height: 25px;
   }
+}
+.nav-sizing {
+  min-width: 960px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .navbar-content {

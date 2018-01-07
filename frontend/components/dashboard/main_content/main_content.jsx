@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import LogoutContainer from '../../logout/logout_container';
 import StreamContainer from './stream_container';
 import UserProfileContainer from './user_profile_container';
+import UploadContainer from './upload_container';
 
 const MainContent = (props) => {
   return (
@@ -11,7 +12,8 @@ const MainContent = (props) => {
         <Switch>
           <Route path="/stream" component={StreamContainer} />
           <Route path="/logout" component={LogoutContainer} />
-          <Route path="/:userId" component={UserProfileContainer} />
+          <Route path="/upload" component={UploadContainer} />
+          <Route path="/artists/:userId" component={UserProfileContainer} />
         </Switch>
       </div>
     </div>

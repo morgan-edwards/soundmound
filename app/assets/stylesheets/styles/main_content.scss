@@ -1,18 +1,16 @@
 @import "base/variables.scss";
 
 .main-content-container {
-  position: absolute;
   top: 45px;
-  right: 0;
-  bottom: 0;
-  left: 0;
   background-color: $lightest-gray;
-  margin-bottom: 50px;
+  height: 100%;
 }
 
 .main-content {
   box-sizing: border-box;
   background-color: white;
   padding: 40px 30px;
+  margin-bottom: 50px;
   height: 100%;
+  width: 90%;
 }

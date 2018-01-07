@@ -1,18 +1,32 @@
 @import "../base/variables.scss";
 
+.landing-container {
+  background-color: $lightest-gray;
+  height: 100%;
+  font-family: $font-stack;
+}
+
+.landing-content {
+  box-sizing: border-box;
+  background-color: white;
+  margin-bottom: 50px;
+  height: 100%;
+  width: 90%;
+}
+
 .front-hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    overflow: hidden;
-    border-top: 4px solid $orange;
-    background-color: #666;
-    height: 450px;
-    background: linear-gradient(90deg, rgba(50, 0, 25, 0.5), rgba(50, 0, 25, 0.9) ),
-      url(image-path('alice-moore-192521.jpg')) no-repeat center;
-    background-size: 100%;
-    -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+  border-top: 4px solid $orange;
+  background-color: #666;
+  height: 450px;
+  background: linear-gradient(90deg, rgba(50, 0, 25, 0.5), rgba(50, 0, 25, 0.9) ),
+    url(image-path('alice-moore-192521.jpg')) no-repeat center;
+  background-size: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 .hero-header {

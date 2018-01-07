@@ -24,7 +24,7 @@ const NavBar = (props) => {
 
   return (
     <div className="navbar-container">
-      <div className='app-content'>
+      <div className="nav-sizing">
         {navbar}
       </div>
     </div>

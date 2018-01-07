@@ -34,13 +34,13 @@ class UserNavBar extends React.Component {
 
           <ul className="nav-links-left">
             <li>
-              <NavLink to="/"
+              <NavLink to="/stream"
                 activeClassName="selected">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to={`/${currentUser.id}`}
+              <NavLink to={`/artists/${currentUser.id}`}
                 activeClassName="selected">
                 Collection
               </NavLink>

@@ -6,29 +6,35 @@ const Hero = (props) => {
     return <Redirect to="/stream" />;
   } else {
     return (
-      <div className="front-hero">
+      <div className="landing-container">
+        <div className="landing-content app-content">
 
-        <div className="hero-header">
-          <h1>SOUNDMOUND</h1>
-          <div className="session_buttons">
+          <div className="front-hero">
 
-            <button onClick={() => props.toggleSessionModal('login')}>
-              Sign in</button>
+            <div className="hero-header">
+              <h1>SOUNDMOUND</h1>
+              <div className="session_buttons">
 
-            <button className="orange-btn"
-              onClick={() => props.toggleSessionModal('signup')}>
-              Create account</button>
+                <button onClick={() => props.toggleSessionModal('login')}>
+                  Sign in</button>
 
+                <button className="orange-btn"
+                  onClick={() => props.toggleSessionModal('signup')}>
+                  Create account</button>
+
+              </div>
+            </div>
+
+            <div className="hero-content">
+              <h1>Connect on SoundMound</h1>
+              <p>Discover, stream, and share some real tight music on a super
+                slow, ad-free, groundbreaking site</p>
+              <button className="orange-btn"
+                onClick={() => props.toggleSessionModal('signup')}>
+                Sign up for free</button>
+            </div>
           </div>
-        </div>
 
-        <div className="hero-content">
-          <h1>Connect on SoundMound</h1>
-          <p>Discover, stream, and share some real tight music on a super
-            slow, ad-free, groundbreaking site</p>
-          <button className="orange-btn"
-            onClick={() => props.toggleSessionModal('signup')}>
-            Sign up for free</button>
         </div>
       </div>
     );
