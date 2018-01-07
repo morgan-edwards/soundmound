@@ -13,6 +13,14 @@
 class Song < ApplicationRecord
   validates :title, :user_id, presence: true
 
+  has_attached_file :image, default_url: "song_default.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  has_attached_file :track
+  validates_attachment_content_type :track,
+    content_type: ['audio/mpeg', 'audio/mp3'],
+    file_name: { matches: [/mp3\Z/] }
+
   belongs_to :user
 
 end

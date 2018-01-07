@@ -34,6 +34,8 @@ gem 'faker'
 gem 'paperclip', '~> 5.0.0'
 gem 'aws-sdk', '< 3.0'
 gem 'figaro'
+#data helper gems
+gem 'ruby-mp3info', :require => 'mp3info'
 
 
 # Use Capistrano for deployment
