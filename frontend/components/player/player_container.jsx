@@ -1,14 +1,20 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import Player from './player';
 
-const Player = () => {
-  return (
-    <div className="player-container">
-      <div className="player app-content">
-        <h1>MUSIC PLAYER GOES HERE</h1>
-      </div>
-    </div>
-  );
+const mapStateToProps = state => {
+  const currentSong = state.entities.songs[state.ui.currentlyPlayingId];
+  return {
+    currentSong
+  };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
 
-export default Player;
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Player);

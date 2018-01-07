@@ -16,7 +16,7 @@ class Song < ApplicationRecord
   has_attached_file :image, default_url: "song_default.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :track, default_url: '/tracks/default_track.mp3'
+  has_attached_file :track, default_url: "default_track.mp3"
   validates_attachment_content_type :track,
     content_type: ['audio/mpeg', 'audio/mp3'],
     file_name: { matches: [/mp3\Z/] }

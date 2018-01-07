@@ -9,6 +9,7 @@ import * as UserAPI from './util/user_api_util';
 import * as FollowAPI from './util/follow_api_util';
 import * as FollowAction from './actions/follow_actions';
 import * as UserAction from './actions/user_actions';
+import * as UIAction from './actions/ui_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.unfollow = FollowAPI.unfollow;
   window.follow = FollowAction.follow;
   window.unfollow = FollowAction.unfollow;
+  window.playSong = UIAction.playSong;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //End of testing assignments
