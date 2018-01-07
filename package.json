@@ -11,6 +11,8 @@
     "react-dom": "^16.2.0",
     "react-modal": "^3.1.10",
     "react-player": "^0.25.3",
+    "react-player-controls": "^0.5.17",
+    "react-progressbar.js": "^0.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",

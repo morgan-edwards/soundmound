@@ -7,10 +7,3 @@ export const toggleSessionModal = (formType) => {
     formType
   };
 };
-
-export const playSong = songId => {
-  return {
-    type: PLAY_SONG,
-    songId
-  };
-};

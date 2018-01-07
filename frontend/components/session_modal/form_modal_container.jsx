@@ -4,8 +4,8 @@ import { toggleSessionModal } from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
   return {
-            modalIsOpen: state.ui.modalOpen,
-            modalType: state.ui.formType
+            modalIsOpen: state.ui.modals.modalOpen,
+            modalType: state.ui.modals.formType
           };
 
 };
