@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import SongListContainer from './song_list_container';
 
 class UserProfile extends React.Component {
   componentDidMount() {
@@ -22,15 +23,20 @@ class UserProfile extends React.Component {
         </div>
       );
     } else {
-        const songs = this.props.songs.map(song => <li>{song.title}</li>);
         return (
-          <div className="music-list">
-            <h1>{this.props.user.username}</h1>
-            <img style={{width: 400}} src={this.props.user.imageUrl} />
-            <ul>
-              {songs}
-            </ul>
-            <Link to={`/${this.props.user.id + 1}`}>Next</Link>
+          <div>
+            <div className="user-banner">
+              <div className="user-image-frame">
+                <img className="user-banner-img" src={this.props.user.imageUrl} />
+              </div>
+              <div className="banner-content">
+                <div className="artist-title">
+                  {this.props.user.username}
+                </div>
+              </div>
+            </div>
+            <SongListContainer user={this.props.user}
+              songs={this.props.songs} />
           </div>
       );
     }

@@ -9,8 +9,45 @@
 .main-content {
   box-sizing: border-box;
   background-color: white;
-  padding: 40px 30px;
   margin-bottom: 50px;
   height: 100%;
   width: 90%;
+}
+
+.user-banner {
+  display: flex;
+  box-sizing: border-box;
+  padding: 30px;
+  width: 100%;
+  height: 260px;
+  background: linear-gradient(135deg, #587476, #587476 50%, #D1BCD6);
+}
+
+.user-image-frame {
+  background-color: cadetblue;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin-right: 30px;
+}
+
+.user-banner-img {
+  width: 200px;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.artist-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  font-size: 24px;
+  background-color: black;
+  color: white;
+  padding: 0 7px;
 }
