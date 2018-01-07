@@ -12,6 +12,7 @@ import {
 import DashboardContainer from './dashboard/dashboard_container';
 import HeroContainer from './landing/hero_container';
 import FormModalContainer from './session_modal/form_modal_container';
+import PlayerContainer from './player/player_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = (props) => {
@@ -21,6 +22,7 @@ const App = (props) => {
         <Route exact path="/" component={HeroContainer} />
         <Route path="/" component={DashboardContainer} />
       </Switch>
+      <PlayerContainer />
       <FormModalContainer />
     </div>
   );
