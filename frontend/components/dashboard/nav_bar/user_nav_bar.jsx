@@ -21,7 +21,7 @@ class UserNavBar extends React.Component {
   }
 
   render() {
-    const { currentUser, logoutRedirect } = this.props.props;
+    const { currentUser, logoutRedirect, history } = this.props.props;
 
     return (
       <div className="navbar-content">

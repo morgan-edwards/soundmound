@@ -8,7 +8,7 @@ class GuestNavBar extends React.Component {
   }
 
   render() {
-    const { toggleSessionModal } = this.state;
+    const { toggleSessionModal, history } = this.state;
 
     return (
       <div className='navbar-content'>
