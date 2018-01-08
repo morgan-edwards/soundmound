@@ -1,16 +1,198 @@
 @import "base/variables.scss";
+.upload-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+}
+
+.upload-portal {
+  width: 800px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid $lightest-gray;
+  margin: 95px auto 0;
+  padding: 100px 0;
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 80px;
+  }
+
+  .upload-btn {
+    color: white;
+    background-color: $orange;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .choose-file-btn {
+    padding: 10px;
+    cursor: pointer;
+  }
+}
 
 .image-preview {
-  width: 260px;
-  height: 260px;
+  width: 261px;
+  height: 261px;
   border: 1px solid $light-gray;
   overflow: hidden;
 
   .track-art {
-    object-fit: fill;
+    min-width: 260px;
+    min-height: 260px;
   }
 }
 
 .file-input {
   display: none;
+}
+
+.orange {
+  color: $orange;
+}
+
+//FORM
+.song-upload-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  padding-bottom: 100px;
+  box-sizing: content-box;
+
+  .image {
+    height: 260px;
+  }
+}
+
+.full-form-container {
+  width: 800px;
+  height: 100%;
+  border-right: 1px solid $lightest-gray;
+  border-left: 1px solid $lightest-gray;
+  border-bottom: 1px solid $lightest-gray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+
+  form {
+    width: 430px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    label {
+      font-size: 14px;
+    }
+
+    input {
+      border: 1px solid $lighter-gray;
+      border-radius: 5px;
+      font-size: 14px;
+      padding: 2px 15px;
+    }
+  }
+}
+
+.upload-action-btns {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+
+  .cancel {
+    border: none;
+  }
+
+  .save {
+    background-color: $orange;
+    color: white;
+    border: none;
+  }
+}
+
+.image-preview {
+  position: relative;
+}
+
+.update-image-btn {
+  position: absolute;
+  right: 64px;
+  top: 227px;
+  background-color: $lightest-gray;
+  font-size: 14px;
+  padding: 2px 0;
+  border-radius: 5px;
+  border: 1px solid $light-gray;
+
+  .choose-file-btn {
+    padding: 0 10px;
+    cursor: pointer;
+  }
+}
+
+//LOADING SPINNER
+
+.spinner {
+  margin: 100px auto;
+  width: 200px;
+  height: 100px;
+  text-align: center;
+  font-size: 10px;
+
+  h1 {
+    font-size: 16px;
+  }
+}
+
+.spinner > div {
+  background-color: $orange;
+  height: 100%;
+  width: 6px;
+  margin: 0 7px;
+  display: inline-block;
+
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
 }
