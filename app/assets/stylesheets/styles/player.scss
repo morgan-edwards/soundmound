@@ -2,7 +2,7 @@
 $icon-size: 30px;
 
 .player-container {
-  // position: fixed;
+  position: fixed;
   bottom: 0px;
   left: 0px;
   right: 0px;
@@ -16,83 +16,91 @@ $icon-size: 30px;
 
 .player {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   min-width: 960px;
   max-width: 1280px;
   margin: 0 auto;
   font-family: $font-stack;
-  width: 90%
+  width: 90%;
+
 }
 
-.ProgressBar {
-  width: 100%;
+.playback-controls {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+
+
+  .play-btn {
+    border: none;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.elapsed {
+  color: $orange;
+  font-size: 12px;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  flex-grow: 1;
+}
+
+.duration {
+  font-size: 12px;
+}
+
+.volume-nav {
+  position: relative;
+}
+.volume-btn {
+  border: none;
+  font-size: 16px;
+  margin: 0;
+  padding: 0 30px 0 40px;
+}
+
+.volume-popup {
+  position: absolute;
+  background: $lightest-gray;
+  border: 1px solid $light-gray;
+  padding: 7px 15px;
+  bottom: 27px;
+  left: 27px;
+  z-index: 3;
 }
 
 .player-art {
   height: 30px;
   width: 30px;
+  padding-right: 10px;
+}
+
+.player-song-details {
+  display: flex;
+  width: 360px;
+}
+
+.artist-name {
+  font-size: 10px;
+  color: $gray;
+}
+
+.song-name {
+  font-size: 10px;
+  color: $dark-gray;
 }
 
 
 $color-hover: desaturate(darken(green, 20%), 10%);
 $color-active: fade-out($color-hover, 0.5);
 
-
-//
-// Buttons
-//
-
-.PlayButton,
-.PauseButton,
-.PrevButton,
-.NextButton,
-.SoundOnButton,
-.SoundOffButton {
-  margin-right: 10px;
-  padding: 8px;
-  background: white;
-  border: 2px solidgreen;
-  border-radius: 100%;
-  outline: none;
-
-  &[disabled] {
-    opacity: 0.5;
-  }
-
-  &.isEnabled {
-    cursor: pointer;
-
-    &:hover {
-      border-color: $color-hover;
-
-      .Icon-shape {
-        fill: $color-hover;
-      }
-    }
-
-    &:active {
-      border-color: $color-active;
-
-      .Icon-shape {
-        fill: $color-active;
-      }
-    }
-  }
-}
-
-.Icon {
-  display: block;
-  width: $icon-size;
-  height: $icon-size;
-}
-
-.Icon-shape {
-  fill: green;
-}
-
-
-//
 // Sliders
 //
 
@@ -100,7 +108,7 @@ $color-active: fade-out($color-hover, 0.5);
 .VolumeSlider {
   position: relative;
   background: #eee;
-  border-radius: 4px;
+  border-radius: 3px;
 
   &-elapsed,
   &-value {
@@ -115,9 +123,9 @@ $color-active: fade-out($color-hover, 0.5);
 
   &-handle {
     position: absolute;
-    width: 16px;
-    height: 16px;
-    background: green;
+    width: 10px;
+    height: 10px;
+    background: $orange;
     border-radius: 100%;
     transform: scale(0);
     transition: transform 0.2s;
@@ -140,14 +148,15 @@ $color-active: fade-out($color-hover, 0.5);
 
     .ProgressBar-elapsed,
     .VolumeSlider-value {
-      background: green;
+      background: $orange;
     }
   }
 }
 
 .ProgressBar {
-  height: 8px;
+  height: 1px;
   margin: 10px 0;
+  width: 100%;
 
   &-elapsed {
     height: 100%;
@@ -187,7 +196,7 @@ $color-active: fade-out($color-hover, 0.5);
 }
 
 .VolumeSlider {
-  width: 8px;
+  width: 2px;
   height: 100px;
   // margin: 10px 0;
 
@@ -222,4 +231,26 @@ $color-active: fade-out($color-hover, 0.5);
       }
     }
   }
+}
+
+//animation
+
+.animated-vol {
+  animation-duration: .5s;
+  animation-fill-mode: both;
+}
+
+@keyframes dropUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  animation-name: slideInUp;
 }

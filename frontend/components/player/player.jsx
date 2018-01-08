@@ -10,7 +10,8 @@ class Player extends React.Component {
       playbackData: props.playbackData,
       lastSeekStart: 0,
       lastSeekEnd: 0,
-      lastIntent: 0
+      lastIntent: 0,
+      volCtrl: false
     };
     this.setVolume = this.setVolume.bind(this);
     this.ref = this.ref.bind(this);
@@ -37,51 +38,71 @@ class Player extends React.Component {
                         <i className="fa fa-pause" aria-hidden="true"></i> :
                         <i className="fa fa-play" aria-hidden="true"></i>;
 
+    const volCtrl = (!this.state.volCtrl) ? '' :
+      <div className="volume-popup animated-vol dropUp">
+        <VolumeSlider
+          volume={volume}
+          onVolumeChange={v => this.setVolume(v)}
+          isEnabled={true} />
+      </div>;
+
     if (this.props.currentSong) {
       return (
         <div className="player-container animated slideInUp">
           <div className="player">
-            <button onClick={togglePause}>
-              {playButton}
-            </button>
 
-
-            <FormattedTime numSeconds={progress.playedSeconds} />
-
-            <ProgressBar
-              totalTime={duration}
-              currentTime={progress.playedSeconds}
-              isSeekable={true}
-              onSeek={time => updateProgress(time)}
-              onSeekStart={time => this.setState(() => ({ lastSeekStart: time }))}
-              onSeekEnd={time => this.player.seekTo(time)}
-              onIntent={time => this.setState(() => ({ lastIntent: time }))} />
-
-            <FormattedTime numSeconds={duration} />
-
-            <VolumeSlider
-              volume={volume}
-              onVolumeChange={v => this.setVolume(v)}
-              isEnabled={true} />
-
-            <div className="player-song-details">
-              <img className="player-art" src={currentSong.imageUrl} />
-              <div className="player-info">
-                <div className="artist-name">{currentSong.artist}</div>
-                <div className="song-name">{currentSong.title}</div>
-              </div>
+            <div className="playback-controls">
+              <button onClick={togglePause}
+                className="play-btn">
+                {playButton}
+              </button>
             </div>
 
 
+            <FormattedTime numSeconds={progress.playedSeconds}
+              className="elapsed"/>
+
+            <div className="progress-bar-container">
+              <ProgressBar
+                totalTime={duration}
+                currentTime={progress.playedSeconds}
+                isSeekable={true}
+                onSeek={time => updateProgress(time)}
+                onSeekStart={time => this.setState(() => ({ lastSeekStart: time }))}
+                onSeekEnd={time => this.player.seekTo(time)}
+                onIntent={time => this.setState(() => ({ lastIntent: time }))} />
+            </div>
+
+            <FormattedTime numSeconds={duration}
+              className="duration" />
+
+
+            <div className="volume-nav">
+              {volCtrl}
+              <button onClick={() => this.setState({ volCtrl: !this.state.volCtrl })}
+                className="volume-btn">
+                <i class="fa fa-volume-down" aria-hidden="true"></i>
+              </button>
+            </div>
 
             <ReactPlayer url={currentSong.trackUrl}
               ref={this.ref}
               playing={playing}
               onDuration={(d) => setDuration(d)}
               onProgress={(p) => updateProgress(p)}
-              volume={volume} />
+              volume={volume}
+              height={0}
+              width={0}/>
+
+          <div className="player-song-details">
+            <img className="player-art" src={currentSong.imageUrl} />
+            <div className="player-info">
+              <div className="artist-name">{currentSong.artist}</div>
+              <div className="song-name">{currentSong.title.slice(0,35)}</div>
+            </div>
           </div>
         </div>
+      </div>
       );
     } else {
       return <div></div>;
