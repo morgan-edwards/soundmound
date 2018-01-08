@@ -13,18 +13,24 @@
 class Song < ApplicationRecord
   validates :title, :user_id, presence: true
 
-  has_attached_file :image, default_url: "song_default.jpg"
+  belongs_to :user
+
+  has_attached_file :image, default_url: :define_default_img
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_attached_file :track, default_url: "default_track.mp3"
   validates_attachment_content_type :track,
-    content_type: ['audio/mpeg', 'audio/mp3'],
-    file_name: { matches: [/mp3\Z/] }
-
-  belongs_to :user
+  content_type: ['audio/mpeg', 'audio/mp3'],
+  file_name: { matches: [/mp3\Z/] }
 
   def to_partial_path
     'api/songs/songs'
+  end
+
+  private
+
+  def define_default_img
+    user.image.url
   end
 
 end

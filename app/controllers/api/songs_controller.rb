@@ -1,8 +1,7 @@
 class Api::SongsController < ApplicationController
 
   def create
-    debugger
-    @song = User.find(song_params[:user_id]).songs.new(song_params)
+    @song = User.find(song_params[:user_id]).songs.new(final_params)
     if @song.save!
       render json: ["Success!"]
     else
