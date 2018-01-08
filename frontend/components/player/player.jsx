@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+import { ProgressBar, VolumeSlider, FormattedTime } from 'react-player-controls';
 
 class Player extends React.Component {
   constructor(props) {
@@ -7,7 +8,9 @@ class Player extends React.Component {
     this.state = {
       curentSong: props.currentSong,
       playbackData: props.playbackData,
-      seeking: false,
+      lastSeekStart: 0,
+      lastSeekEnd: 0,
+      lastIntent: 0
     };
     this.setVolume = this.setVolume.bind(this);
     this.ref = this.ref.bind(this);
@@ -18,33 +21,12 @@ class Player extends React.Component {
                   playbackData: nextProps.playbackData});
   }
 
-  setVolume(e) {
-    return this.props.setVolume(parseFloat(e.target.value));
-  }
-
-  onSeekMouseDown(e) {
-    this.setState({ seeking: true })
-  }
-
-  onSeekChange(e) {
-    return this.props.setProgress(parseFloat(e.target.value))
-  }
-
-  onSeekMouseUp(e) {
-    this.setState({ seeking: false })
-    this.player.seekTo(parseFloat(e.target.value))
-  }
-
-  onProgress(state) {
-    console.log('onProgress', state)
-    // We only want to update time slider if we are not currently seeking
-    if (!this.state.seeking) {
-      this.setState(state);
-    }
+  setVolume(volume) {
+    this.props.setVolume(parseFloat(volume));
   }
 
   ref(player) {
-    this.player = player
+    this.player = player;
   }
 
   render() {
@@ -58,32 +40,45 @@ class Player extends React.Component {
     if (this.props.currentSong) {
       return (
         <div className="player-container animated slideInUp">
-          <div className="player app-content">
-            {currentSong.title}
+          <div className="player">
             <button onClick={togglePause}>
               {playButton}
             </button>
 
-            <label>Volume
-              <input type='range'
-                min={0}
-                max={1}
-                step='any'
-                value={volume}
-                onChange={this.setVolume}/>
-            </label>
 
-            <label>Progress
-              <input type="range"
-                min={0}
-                max={1}
-                value={progress}
-                className="progress" />
-            </label>
+            <FormattedTime numSeconds={progress.playedSeconds} />
+
+            <ProgressBar
+              totalTime={duration}
+              currentTime={progress.playedSeconds}
+              isSeekable={true}
+              onSeek={time => updateProgress(time)}
+              onSeekStart={time => this.setState(() => ({ lastSeekStart: time }))}
+              onSeekEnd={time => this.player.seekTo(time)}
+              onIntent={time => this.setState(() => ({ lastIntent: time }))} />
+
+            <FormattedTime numSeconds={duration} />
+
+            <VolumeSlider
+              volume={volume}
+              onVolumeChange={v => this.setVolume(v)}
+              isEnabled={true} />
+
+            <div className="player-song-details">
+              <img className="player-art" src={currentSong.imageUrl} />
+              <div className="player-info">
+                <div className="artist-name">{currentSong.artist}</div>
+                <div className="song-name">{currentSong.title}</div>
+              </div>
+            </div>
+
+
 
             <ReactPlayer url={currentSong.trackUrl}
               ref={this.ref}
               playing={playing}
+              onDuration={(d) => setDuration(d)}
+              onProgress={(p) => updateProgress(p)}
               volume={volume} />
           </div>
         </div>

@@ -11,16 +11,20 @@ import {
 const _nullSongs = Object.freeze({});
 
 const formatSongs = (user, songsArray) => {
-  songsArray.map(obj => obj['artist'] = user.username);
-  let songsHash = songsArray.reduce((acc, song) => {
-    acc[song.id] = song;
-    return acc;
-  }, {});
-  return songsHash;
+  if (songsArray) {
+    songsArray.map(obj => obj['artist'] = user.username);
+    let songsHash = songsArray.reduce((acc, song) => {
+      acc[song.id] = song;
+      return acc;
+    }, {});
+    return songsHash;
+  } else {
+    return {};
+  }
 };
 
 const songsReducer = (state = _nullSongs, action) => {
-  let songs;
+  let songs = {};
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_USER:
