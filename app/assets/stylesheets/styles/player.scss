@@ -234,23 +234,23 @@ $color-active: fade-out($color-hover, 0.5);
 }
 
 //animation
-
-.animated-vol {
-  animation-duration: .5s;
-  animation-fill-mode: both;
+.volume-popup {
+  visibility: hidden; /* hides sub-menu */
+  opacity: 0;
+  top: -120px;
+  transform: translateY(2em);
+  z-index: -1;
+  transition: all 0.3s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
 }
 
-@keyframes dropUp {
-  from {
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.slideInUp {
-  animation-name: slideInUp;
+.volume-nav:focus .volume-popup,
+.volume-nav:focus .volume-popup,
+.volume-nav:active .volume-popup,
+.volume-nav:focus-within .volume-popup,
+.volume-nav:hover .volume-popup {
+  visibility: visible; /* shows sub-menu */
+  opacity: 1;
+  z-index: 1;
+  transform: translateY(0%);
+  transition-delay: 0s, 0s, 0.3s; /* this removes the transition delay so the menu will be visible while the other styles transition */
 }

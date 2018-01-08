@@ -11,7 +11,6 @@ class Player extends React.Component {
       lastSeekStart: 0,
       lastSeekEnd: 0,
       lastIntent: 0,
-      volCtrl: false
     };
     this.setVolume = this.setVolume.bind(this);
     this.ref = this.ref.bind(this);
@@ -37,14 +36,6 @@ class Player extends React.Component {
     const playButton = (this.props.playbackData.playing) ?
                         <i className="fa fa-pause" aria-hidden="true"></i> :
                         <i className="fa fa-play" aria-hidden="true"></i>;
-
-    const volCtrl = (!this.state.volCtrl) ? '' :
-      <div className="volume-popup animated-vol dropUp">
-        <VolumeSlider
-          volume={volume}
-          onVolumeChange={v => this.setVolume(v)}
-          isEnabled={true} />
-      </div>;
 
     if (this.props.currentSong) {
       return (
@@ -78,9 +69,14 @@ class Player extends React.Component {
 
 
             <div className="volume-nav">
-              {volCtrl}
-              <button onClick={() => this.setState({ volCtrl: !this.state.volCtrl })}
-                className="volume-btn">
+              <div className="volume-popup">
+                <VolumeSlider
+                  volume={volume}
+                  onVolumeChange={v => this.setVolume(v)}
+                  isEnabled={true} />
+              </div>
+
+              <button className="volume-btn">
                 <i class="fa fa-volume-down" aria-hidden="true"></i>
               </button>
             </div>
