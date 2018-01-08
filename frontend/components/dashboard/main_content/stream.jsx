@@ -14,7 +14,7 @@ class Stream extends React.Component {
   render() {
     return (
       <div className="music-list">
-        <h1>I'm a music list</h1>
+        <h1>THE SONGS OF PEOPLE I FOLLOW</h1>
       </div>
     );
   }

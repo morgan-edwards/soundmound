@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import SongListContainer from './song_list_container';
+import SongList from './song_list';
 
 class UserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     if (!this.props.user) {
       this.props.fetchUser(this.props.userId);
@@ -13,6 +17,7 @@ class UserProfile extends React.Component {
     if (this.props.userId !== nextProps.userId) {
       this.props.fetchUser(nextProps.userId);
     }
+    this.setState(nextProps.songs);
   }
 
   render() {
@@ -35,7 +40,7 @@ class UserProfile extends React.Component {
                 </div>
               </div>
             </div>
-            <SongListContainer user={this.props.user}
+            <SongList user={this.props.user}
               songs={this.props.songs} />
           </div>
       );
