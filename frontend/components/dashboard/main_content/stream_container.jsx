@@ -4,7 +4,6 @@ import { fetchUser, fetchFollows } from '../../../actions/user_actions';
 
 const mapStateToProps = state => {
   const currentUser = state.session.currentUser;
-
   return {currentUser};
 };
 

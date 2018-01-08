@@ -10,24 +10,40 @@ require 'faker'
 
 User.destroy_all
 Song.destroy_all
+Follow.destroy_all
 
-demo_user = User.create!(username: 'demo', password: 'password')
-usernames = []
+guest = User.create!(username: 'Guest', password: 'password')
+
+usernames = ['Guest']
+
 25.times do
   username = Faker::Kpop.girl_groups
   usernames << username
-  unless usernames.include?(username)
-    User.create!(username: Faker::Kpop.girl_groups, password: Faker::Internet.password(10))
-  end
+  User.create(username: Faker::Kpop.girl_groups, password: Faker::Internet.password(10))
 end
 
 users = User.all.map {|user| user.id}
 
 p "Created #{User.count} users!"
+
 nums = (1..3).to_a
 100.times do
-  Song.create!(title: Faker::Hipster.sentence(nums.sample),
+  Song.create!(title: Faker::Hipster.words(2).join(' '),
                 user_id: users.sample)
 end
 
-p "Created #{Song.count} users!"
+p "Created #{Song.count} songs!"
+
+10.times do
+  followee = users.sample
+  follower = guest.id
+  Follow.create(follower_id: follower, followee_id: users.sample)
+end
+
+100.times do
+  followee = users.sample
+  follower = users.sample
+  Follow.create(follower_id: follower, followee_id: users.sample)
+end
+
+p "Created #{Follow.count} follows!"

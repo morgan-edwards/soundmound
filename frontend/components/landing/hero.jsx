@@ -30,8 +30,9 @@ const Hero = (props) => {
               <p>Discover, stream, and share some real tight music on a super
                 slow, ad-free, groundbreaking site</p>
               <button className="orange-btn"
-                onClick={() => props.toggleSessionModal('signup')}>
-                Sign up for free</button>
+                onClick={() => props.login({username: "Guest", password: "password"})}>
+                Login as Guest
+              </button>
             </div>
           </div>
 

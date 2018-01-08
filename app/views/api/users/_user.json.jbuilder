@@ -15,5 +15,5 @@ json.user do
 end
 
 json.songs do
-  json.array! user_songs, partial: 'api/songs/song', as: :song
+  json.array! user_songs, partial: 'api/songs/song.json.jbuilder', as: :song
 end
