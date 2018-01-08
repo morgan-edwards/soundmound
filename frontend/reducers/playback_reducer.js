@@ -24,6 +24,7 @@ const playbackReducer = (state = _defaultPlayback, action) => {
     case PLAY_SONG:
       newState = merge({}, state);
       newState.currentlyPlayingId = action.songId;
+      newState.playing = true;
       return newState;
     case TOGGLE_PAUSE:
       newState = merge({}, state);

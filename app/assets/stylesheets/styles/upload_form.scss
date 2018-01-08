@@ -1,0 +1,16 @@
+@import "base/variables.scss";
+
+.image-preview {
+  width: 260px;
+  height: 260px;
+  border: 1px solid $light-gray;
+  overflow: hidden;
+
+  .track-art {
+    object-fit: fill;
+  }
+}
+
+.file-input {
+  display: none;
+}

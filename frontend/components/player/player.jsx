@@ -77,7 +77,7 @@ class Player extends React.Component {
               </div>
 
               <button className="volume-btn">
-                <i class="fa fa-volume-down" aria-hidden="true"></i>
+                <i className="fa fa-volume-down" aria-hidden="true"></i>
               </button>
             </div>
 
