@@ -1,6 +1,8 @@
 import merge from 'lodash/merge';
 
-import { TOGGLE_SESSION_MODAL } from '../actions/ui_actions';
+import { TOGGLE_SESSION_MODAL,
+          TOGGLE_MODAL,
+        } from '../actions/ui_actions';
 
 const _modalClosed = Object.freeze({
   modalOpen: false,
@@ -12,6 +14,11 @@ const uiReducer = (state = _modalClosed, action) => {
   let newState;
   switch(action.type) {
     case TOGGLE_SESSION_MODAL:
+      newState = (!state.modalOpen) ?
+                  { modalOpen: !state.modalOpen, formType: action.formType} :
+                  { modalOpen: !state.modalOpen, formType: null};
+      return newState;
+    case TOGGLE_MODAL:
       newState = (!state.modalOpen) ?
                   { modalOpen: !state.modalOpen, formType: action.formType} :
                   { modalOpen: !state.modalOpen, formType: null};

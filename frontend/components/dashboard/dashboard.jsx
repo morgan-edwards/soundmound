@@ -6,8 +6,9 @@ import MainContentContainer from './main_content/main_content_container';
 import UserProfileContainer from './main_content/user_profile_container';
 
 const Dashboard = (props) => {
+  const modalClass = (props.modalOpen) ? "modal-open" : "";
   return (
-    <div>
+    <div className={modalClass}>
       <NavBarContainer />
       <MainContentContainer />
     </div>

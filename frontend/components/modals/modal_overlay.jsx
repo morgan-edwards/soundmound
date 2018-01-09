@@ -1,7 +1,7 @@
 import React from 'react';
-import SessionFormContainer from '../session_form/session_form_container';
+import EditModalContainer from './edit_modal_container'
 
-class FormModal extends React.Component {
+class ModalOverlay extends React.Component {
   constructor(props){
     super(props);
     this.closeModal = this.closeModal.bind(this);
@@ -10,22 +10,21 @@ class FormModal extends React.Component {
   closeModal(e) {
     e.preventDefault();
     if (e.target === e.currentTarget) {
-      this.props.toggleSessionModal();
+      this.props.toggleSessionModal(null);
     }
   }
 
   render() {
-
-    if (true) {
+    if (!this.props.modalIsOpen) {
       return<div></div>;
     } else {
       return (
-        <div className="modal-overlay" onClick={this.closeModal}>
+        <div className="modal-overlay animated fadeIn" onClick={this.closeModal}>
           <button onClick={this.closeModal}
                   className="close-button">
             <i onClick={this.closeModal} className="fa fa-times fa-lg" aria-hidden="true"></i>
           </button>
-          <SessionFormContainer formType={this.props.modalType} closeModal={this.props.toggleSessionModal} />
+          <EditModalContainer />
         </div>
       );
     }
@@ -33,4 +32,4 @@ class FormModal extends React.Component {
 
 }
 
-export default FormModal;
+export default ModalOverlay;

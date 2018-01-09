@@ -7,8 +7,9 @@ import UploadContainer from './upload_container';
 import { AuthRoute, ProtectedRoute } from '../../../util/route_util';
 
 const MainContent = (props) => {
+  const modalClass = (props.modalOpen) ? "modal-open" : "";
   return (
-    <div className="main-content-container">
+    <div className={`${modalClass} main-content-container`}>
       <div className="app-content main-content">
         <Switch>
           <ProtectedRoute path="/stream" component={StreamContainer} />

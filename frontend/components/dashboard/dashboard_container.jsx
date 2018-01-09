@@ -5,7 +5,10 @@ import Dashboard from './dashboard';
 const mapStateToProps = (state, ownProps) => {
   const content = ownProps.location.pathname.slice(1);
   const loggedIn = Boolean(state.session.currentUser);
-  return { loggedIn, content };
+  return { loggedIn,
+            content,
+            modalOpen: state.ui.modals.modalOpen,
+          };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -4,20 +4,25 @@ import { Link } from 'react-router-dom';
 class SongListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.handlePlay = this.handlePlay.bind(this);
     this.state = this.props.playbackData;
+    this.handlePlay = this.handlePlay.bind(this);
+    this.openEditModal = this.openEditModal.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState(nextProps.playbackData);
   }
 
-  handlePlay(e) {
+  handlePlay() {
     if (this.props.playbackData.currentlyPlayingId === this.props.song.id) {
       return this.props.togglePause();
     } else {
       return this.props.playSong(this.props.song.id);
     }
+  }
+
+  openEditModal() {
+    return this.props.toggleModal('edit');
   }
 
   render() {
@@ -54,6 +59,9 @@ class SongListItem extends React.Component {
           </div>
 
           <div className="details-footer">
+            <button onClick={this.openEditModal}>
+              Edit
+            </button>
           </div>
 
         </div>
