@@ -12,12 +12,14 @@ class Upload extends React.Component {
       audioFile: null,
       imageFile: null,
       imageUrl: props.currentUser.imageUrl,
+      defaultFile: "",
     };
     this.linkState = this.linkState.bind(this);
     this.updateAudioFile = this.updateAudioFile.bind(this);
     this.updateImageFile = this.updateImageFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goHome = this.goHome.bind(this);
+    this.cancelForm = this.cancelForm.bind(this);
   }
 
   updateAudioFile(e) {
@@ -42,6 +44,7 @@ class Upload extends React.Component {
     };
 
     if (file) fileReader.readAsDataURL(file);
+    e.currentTarget.value = null;
   }
 
   linkState(field) {
@@ -49,11 +52,21 @@ class Upload extends React.Component {
   }
 
   cancelForm(e) {
+    console.log(e);
     e.preventDefault();
+    this.setState({
+      formOpen: false,
+      uploading: false,
+      title: '',
+      audioFile: null,
+      imageFile: null,
+      imageUrl: this.props.currentUser.imageUrl,
+      defaultFile: "",
+    });
   }
 
   goHome(res) {
-    console.log('res');
+    console.log(res);
     return this.props.history.push(`/artists/${this.props.currentUser.id}`);
   }
 
@@ -85,6 +98,7 @@ class Upload extends React.Component {
                 <input className="file-input"
                   id="song-image"
                   type="file"
+                  value={this.state.defaultFile}
                   onChange={this.updateImageFile} />
               </div>
             </div>
@@ -132,6 +146,7 @@ class Upload extends React.Component {
             <input className="file-input"
               id="audio-file"
               type="file"
+              value={this.state.defaultFile}
               onChange={this.updateAudioFile} />
           </div>
         </div>
