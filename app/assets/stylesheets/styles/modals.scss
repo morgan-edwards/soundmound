@@ -15,7 +15,8 @@
   background-color: rgba(242,242,242,0.9); /* Black w/ opacity */
 
   .close-button {
-    float: right;
+    position: fixed;
+    right: -18px;
     padding: 20px;
     height: 46px;
     width: 46px;
