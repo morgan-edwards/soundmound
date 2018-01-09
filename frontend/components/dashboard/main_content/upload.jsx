@@ -52,7 +52,6 @@ class Upload extends React.Component {
   }
 
   cancelForm(e) {
-    console.log(e);
     e.preventDefault();
     this.setState({
       formOpen: false,
@@ -80,7 +79,7 @@ class Upload extends React.Component {
     if (this.state.imageFile) {
       formData.append("song[image]", this.state.imageFile);
     }
-    uploadSong(formData).then(this.goHome);
+    this.props.uploadSong(formData).then(this.goHome);
   }
 
   render() {

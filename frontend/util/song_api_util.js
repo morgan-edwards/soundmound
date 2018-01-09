@@ -9,3 +9,15 @@ export const uploadSong = (formData) => {
     })
   );
 };
+
+export const updateSong = (formData) => {
+  return (
+    $.ajax({
+      url: `api/songs/${formData.id}`,
+      method: 'PATCH',
+      data: formData,
+      contentType: false,
+      processData: false
+    })
+  );
+};

@@ -9,7 +9,6 @@ class ModalOverlay extends React.Component {
   }
 
   closeModal(e) {
-    e.preventDefault();
     if (e.target === e.currentTarget) {
       this.props.toggleModal(null);
     }
@@ -40,7 +39,9 @@ class ModalOverlay extends React.Component {
                   className="close-button">
             <i onClick={this.closeModal} className="fa fa-times fa-lg" aria-hidden="true"></i>
           </button>
-          {modalContent}
+          <div>
+            {modalContent}
+          </div>
         </div>
       );
     }

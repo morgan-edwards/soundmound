@@ -3,10 +3,64 @@ import React from 'react';
 class EditModal extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      formOpen: false,
+      uploading: false,
+      title: props.song.title,
+      imageFile: null,
+      imageUrl: props.song.imageUrl,
+      defaultFile: "",
+    };
+    this.linkState = this.linkState.bind(this);
+    this.updateImageFile = this.updateImageFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.goHome = this.goHome.bind(this);
+    this.cancelForm = this.cancelForm.bind(this);
+  }
+
+  updateImageFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    };
+
+    if (file) fileReader.readAsDataURL(file);
+    e.currentTarget.value = null;
+  }
+
+  cancelForm(e) {
+    if (e) e.preventDefault();
+    this.setState({
+      formOpen: false,
+      uploading: false,
+      title: '',
+      audioFile: null,
+      imageFile: null,
+      imageUrl: this.props.song.imageUrl,
+      defaultFile: "",
+    });
+    this.props.toggleModal(null);
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({uploading: true});
+    const formData = new FormData();
+    formData.append("song[id]", this.props.song.id);
+    formData.append("song[user_id]", this.props.currentUser.id);
+    formData.append("song[title]", this.state.title);
+    formData.append("song[track]", this.state.audioFile);
+    if (this.state.imageFile) {
+      formData.append("song[image]", this.state.imageFile);
+    }
+    this.props.updateSong(formData).then(this.goHome);
+  }
+
+  goHome(res) {
+    console.log(res);
+    return this.cancelForm();
   }
 
   linkState(field) {
@@ -25,7 +79,8 @@ class EditModal extends React.Component {
               <div className="song-update-container">
                 <div className="image-preview-container">
                   <div className="image-preview">
-                    <img className="track-art" src={"this.state.imageUrl"} />
+                    <img className="track-art" src={this.state.imageUrl} />
+
                     <div className="update-image-btn">
                       <label htmlFor="song-image" className="choose-file-btn">
                         <i className="fa fa-camera" aria-hidden="true"></i>
@@ -34,24 +89,26 @@ class EditModal extends React.Component {
                       <input className="file-input"
                         id="song-image"
                         type="file"
-                        onChange={"this.updateImageFile"} />
+                        value={this.state.defaultFile}
+                        onChange={this.updateImageFile} />
                     </div>
+
                   </div>
                 </div>
 
 
 
-                <form onSubmit={"this.handleSubmit"}>
+                <form onSubmit={this.handleSubmit}>
                   <label htmlFor="title">Title<span className="orange">*</span></label>
                   <input type="text"
                     id="title"
-                    value={"this.state.title"}
-                    onChange={"this.linkState('title')"} />
+                    value={this.state.title}
+                    onChange={this.linkState('title')} />
 
                 <div className="upload-action-btns">
-                  <button onClick={"this.cancelForm"}
+                  <button onClick={this.cancelForm}
                     className="cancel">Cancel</button>
-                  <button onClick={"this.handleSubmit"}
+                  <button onClick={this.handleSubmit}
                     className="save">Save</button>
                 </div>
               </form>

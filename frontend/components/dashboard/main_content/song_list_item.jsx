@@ -22,7 +22,7 @@ class SongListItem extends React.Component {
   }
 
   openEditModal() {
-    return this.props.toggleModal('edit');
+    return this.props.toggleModal('edit', this.props.song.id);
   }
 
   render() {

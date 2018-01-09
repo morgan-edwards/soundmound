@@ -1,17 +1,12 @@
 import merge from 'lodash/merge';
 
-import {
-  RECEIVE_CURRENT_USER,
-} from '../actions/session_actions';
-import {
-  RECEIVE_USER,
-} from '../actions/user_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
 import {
   RECEIVE_FOLLOW,
+  REMOVE_FOLLOW
 } from '../actions/follow_actions';
-import {
-  REMOVE_FOLLOW,
-} from '../actions/follow_actions';
+import { RECEIVE_SONG } from '../actions/song_actions';
 
 
 const _nullUsers = Object.freeze({});
