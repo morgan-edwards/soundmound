@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ModalOverlay from './modal_overlay';
-import { toggleSessionModal } from '../../actions/ui_actions';
+import { toggleModal } from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
   return {
@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleSessionModal: (formType) => dispatch(toggleSessionModal(formType))
+    toggleModal: (formType) => dispatch(toggleModal(formType))
   };
 };
 

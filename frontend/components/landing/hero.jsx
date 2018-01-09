@@ -15,11 +15,11 @@ const Hero = (props) => {
               <h1>SOUNDMOUND</h1>
               <div className="session_buttons">
 
-                <button onClick={() => props.toggleSessionModal('login')}>
+                <button onClick={() => props.toggleModal('login')}>
                   Sign in</button>
 
                 <button className="orange-btn"
-                  onClick={() => props.toggleSessionModal('signup')}>
+                  onClick={() => props.toggleModal('signup')}>
                   Create account</button>
 
               </div>

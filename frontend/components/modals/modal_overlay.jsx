@@ -1,5 +1,6 @@
 import React from 'react';
 import EditModalContainer from './edit_modal_container'
+import SessionFormContainer from './session_form_container'
 
 class ModalOverlay extends React.Component {
   constructor(props){
@@ -10,11 +11,26 @@ class ModalOverlay extends React.Component {
   closeModal(e) {
     e.preventDefault();
     if (e.target === e.currentTarget) {
-      this.props.toggleSessionModal(null);
+      this.props.toggleModal(null);
     }
   }
 
   render() {
+    let modalContent;
+    switch (this.props.modalType) {
+      case 'edit':
+        modalContent = <EditModalContainer />;
+        break;
+      case 'login':
+        modalContent = <SessionFormContainer formType='login'/>;
+        break;
+      case 'signup':
+        modalContent = <SessionFormContainer formType='signup'/>;
+        break;
+      default:
+        modalContent = <div style={{display: "none"}}></div>;
+
+    }
     if (!this.props.modalIsOpen) {
       return<div></div>;
     } else {
@@ -24,7 +40,7 @@ class ModalOverlay extends React.Component {
                   className="close-button">
             <i onClick={this.closeModal} className="fa fa-times fa-lg" aria-hidden="true"></i>
           </button>
-          <EditModalContainer />
+          {modalContent}
         </div>
       );
     }

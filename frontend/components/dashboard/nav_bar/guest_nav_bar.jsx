@@ -8,7 +8,7 @@ class GuestNavBar extends React.Component {
   }
 
   render() {
-    const { toggleSessionModal, history } = this.state;
+    const { toggleModal, history } = this.state;
 
     return (
       <div className='navbar-content'>
@@ -47,14 +47,14 @@ class GuestNavBar extends React.Component {
             <li>
               <button onClick={this.loginRedirect}
                 className="nav-btn dark-nav-btn"
-                onClick={() => toggleSessionModal('login')}>
+                onClick={() => toggleModal('login')}>
                 Sign in
               </button>
             </li>
             <li>
               <button onClick={this.signupRedirect}
                 className="nav-btn orange-nav-btn"
-                onClick={() => toggleSessionModal('signup')}>
+                onClick={() => toggleModal('signup')}>
                 Create account
               </button>
             </li>

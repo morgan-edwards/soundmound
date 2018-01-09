@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { signup, login, logout } from '../../../actions/session_actions';
 import { fetchUser } from '../../../actions/user_actions';
-import { toggleSessionModal } from '../../../actions/ui_actions';
+import { toggleModal } from '../../../actions/ui_actions';
 import NavBar from './nav_bar';
 
 const mapStateToProps = ({ session }) => {
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
   login: (user) => dispatch(login(user)),
   logout: () => dispatch(logout()),
   fetchUser: (id) => dispatch(fetchUser(id)),
-  toggleSessionModal: (formType) => dispatch(toggleSessionModal(formType)),
+  toggleModal: (formType) => dispatch(toggleModal(formType)),
 });
 
 export default withRouter(connect(

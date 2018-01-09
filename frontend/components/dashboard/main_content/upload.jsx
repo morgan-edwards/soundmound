@@ -109,17 +109,17 @@ class Upload extends React.Component {
       </div>
     </div>;
 
-    console.log(this.state.uploading);
-
     const uploading = (!this.state.uploading) ? <div></div> :
-      <div className="spinner">
-        <div className="rect1"></div>
-        <div className="rect2"></div>
-        <div className="rect3"></div>
-        <div className="rect4"></div>
-        <div className="rect5"></div>
-        <h1>Tossing it in the mound...</h1>
-      </div>
+      <div className="spinner-container">
+        <div className="spinner">
+          <div className="rect1"></div>
+          <div className="rect2"></div>
+          <div className="rect3"></div>
+          <div className="rect4"></div>
+          <div className="rect5"></div>
+          <h1>Tossing your sound on the mound...</h1>
+        </div>
+      </div>;
 
 
     return (

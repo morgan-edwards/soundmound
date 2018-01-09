@@ -30,23 +30,27 @@
   }
 }
 
-.edit-form-container {
-  color: $white;
+.form-container {
+  color: $dark-gray;
   display: flex;
   flex-direction: column;
   background-color: $white;
-  margin: 76px auto;
-  padding: 20px 20px 20px 20px;
-  width: 450px;
-  height: 300px;
+  margin: 80px auto;
+  padding: 20px;
 }
 
-.edit-form {
+.edit-container {
+  width: 800px;
+  height: 400px;
+}
+
+.modal-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   height: 100%;
+  font-family: $font-stack;
 
   input {
     color: $dark-gray;
@@ -59,34 +63,9 @@
   }
 }
 
-.session-form-container {
-  color: $white;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  background-color: $white;
-  margin: 76px auto;
-  padding: 20px;
+.session-container {
   width: 450px;
   height: 300px;
-}
-
-.session-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-
-  input {
-    color: $dark-gray;
-    font-size: 18;
-    line-height: 24px;
-    padding: 7px 8px;
-    border-radius: 5px;
-    border: 1px solid $light-gray;
-    width: 100%;
-  }
 }
 
 .form-button {
@@ -102,4 +81,46 @@
   color: #f50;
   padding: 6px 0 5px;
   transition: transform .12s,padding .12s,min-height .12s,opacity .2s;
+}
+
+.song-update-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  box-sizing: content-box;
+
+  .image {
+    height: 260px;
+  }
+}
+
+.song-update-container {
+  width: 800px;
+  height: 100%;
+  border: 1px solid $lightest-gray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+
+  form {
+    width: 430px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    label {
+      font-size: 14px;
+    }
+
+    input {
+      border: 1px solid $lighter-gray;
+      border-radius: 5px;
+      font-size: 14px;
+      padding: 2px 15px;
+    }
+  }
 }

@@ -13,11 +13,6 @@ const uiReducer = (state = _modalClosed, action) => {
   Object.freeze(state);
   let newState;
   switch(action.type) {
-    case TOGGLE_SESSION_MODAL:
-      newState = (!state.modalOpen) ?
-                  { modalOpen: !state.modalOpen, formType: action.formType} :
-                  { modalOpen: !state.modalOpen, formType: null};
-      return newState;
     case TOGGLE_MODAL:
       newState = (!state.modalOpen) ?
                   { modalOpen: !state.modalOpen, formType: action.formType} :

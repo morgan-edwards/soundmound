@@ -13,13 +13,13 @@ const NavBar = (props) => {
           status,
           login,
           signup,
-          toggleSessionModal
+          toggleModal
           } = props;
   let navbar;
   if (status === "logged_in") {
     navbar = <UserNavBar props={{logout, history, currentUser, fetchUser}} />;
   } else {
-    navbar = <GuestNavBar props={{history, login, signup, toggleSessionModal}} />;
+    navbar = <GuestNavBar props={{history, login, signup, toggleModal}} />;
   }
 
   return (

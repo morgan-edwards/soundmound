@@ -1,6 +1,8 @@
 @import "../base/variables.scss";
 
-.app {
+body {
+  height: 100vh;
+  background-color: $lightest-gray;
 }
 
 .app-content {

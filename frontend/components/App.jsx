@@ -11,7 +11,6 @@ import {
 
 import DashboardContainer from './dashboard/dashboard_container';
 import HeroContainer from './landing/hero_container';
-import FormModalContainer from './session_modal/form_modal_container';
 import ModalOverlayContainer from './modals/modal_overlay_container';
 import EditModalContainer from './modals/edit_modal_container';
 import PlayerContainer from './player/player_container';
@@ -25,9 +24,8 @@ const App = (props) => {
         <Route exact path="/" component={HeroContainer} />
         <Route path="/" component={DashboardContainer} />
       </Switch>
-      <PlayerContainer />
 
-      <FormModalContainer />
+      <PlayerContainer />
       <ModalOverlayContainer />
     </div>
   );

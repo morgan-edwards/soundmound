@@ -36,8 +36,8 @@ class SessionForm extends React.Component {
     const buttonText = (this.props.formType === 'login') ?
                         "Login" : "Sign up";
     return (
-    <div className="session-form-container">
-      <form className="session-form" onSubmit={this.handleSubmit}>
+    <div className="animated bounceInDown form-container session-container">
+      <form className="modal-form" onSubmit={this.handleSubmit}>
         <input type="text"
                 value={this.state.username}
                 placeholder="username *"
