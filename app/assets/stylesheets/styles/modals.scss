@@ -12,7 +12,8 @@
   overflow: auto;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  background-color: rgba(242,242,242,0.9); /* Black w/ opacity */
+  background-color: rgba(242,242,242,0.9);
+  animation-duration: 500ms;
 
   .close-button {
     position: fixed;
@@ -37,6 +38,7 @@
   background-color: $white;
   margin: 80px auto;
   padding: 20px;
+  animation-duration: 500ms;
 }
 
 .edit-container {

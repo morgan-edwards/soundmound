@@ -7,7 +7,13 @@ import SessionForm from './session_form';
 const mapStateToProps = (state, ownProps) => {
   const loggedIn = Boolean(state.session.currentUser);
   const formType = ownProps.formType;
-  return { loggedIn, formType, errors: state.errors.session };
+  const animation = ownProps.props.animation;
+  const closeModal = ownProps.props.closeModal;
+  return { loggedIn,
+            formType,
+            animation,
+            closeModal,
+            errors: state.errors.session };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

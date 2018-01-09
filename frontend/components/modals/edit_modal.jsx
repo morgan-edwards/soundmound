@@ -10,12 +10,17 @@ class EditModal extends React.Component {
       imageFile: null,
       imageUrl: props.song.imageUrl,
       defaultFile: "",
+      animation: props.animation,
     };
     this.linkState = this.linkState.bind(this);
     this.updateImageFile = this.updateImageFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goHome = this.goHome.bind(this);
     this.cancelForm = this.cancelForm.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ animation: nextProps.animation });
   }
 
   updateImageFile(e) {
@@ -41,7 +46,7 @@ class EditModal extends React.Component {
       imageUrl: this.props.song.imageUrl,
       defaultFile: "",
     });
-    this.props.toggleModal(null);
+    this.props.closeModal();
   }
 
   handleSubmit(e) {
@@ -72,7 +77,7 @@ class EditModal extends React.Component {
   render() {
     if (this.props.formType === "edit") {
       return (
-        <div className="animated bounceInDown form-container edit-container">
+        <div className={`animated ${this.state.animation} form-container edit-container`}>
           <div className="modal-form">
 
             <div className="song-update-form">
