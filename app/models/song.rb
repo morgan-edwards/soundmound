@@ -20,8 +20,8 @@ class Song < ApplicationRecord
 
   has_attached_file :track, default_url: "default_track.mp3"
   validates_attachment_content_type :track,
-  content_type: ['audio/mpeg', 'audio/mp3'],
-  file_name: { matches: [/mp3\Z/] }
+    content_type: ['audio/mpeg', 'audio/mp3'],
+    file_name: { matches: [/mp3\Z/] }
 
   def to_partial_path
     'api/songs/songs'
