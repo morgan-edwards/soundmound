@@ -97,6 +97,9 @@
 
 .list-play:hover {
   background-color: $dark-orange;
+  .global-play-btn:hover {
+    color: white;
+  }
 }
 
 .light-row {

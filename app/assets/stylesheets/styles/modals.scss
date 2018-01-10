@@ -109,7 +109,7 @@
 
   form {
     width: 430px;
-    height: 100px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -125,4 +125,18 @@
       padding: 2px 15px;
     }
   }
+}
+
+.delete-button {
+  height: 57px;
+  width: 33px;
+  font-size: 23px;
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  border: none;
+}
+
+.delete-button:hover {
+  color: $orange;
 }

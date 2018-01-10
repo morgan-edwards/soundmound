@@ -132,9 +132,11 @@ class EditModal extends React.Component {
                   <button onClick={this.handleSubmit}
                     className="save">Save</button>
                 </div>
-                <button onClick={this.deleteSong}
-                  className="save">Delete this song</button>
               </form>
+              <button onClick={this.deleteSong}
+                className="delete-button">
+                <i className="fa fa-trash" aria-hidden="true"></i>
+              </button>
             </div>
           </div>
 
