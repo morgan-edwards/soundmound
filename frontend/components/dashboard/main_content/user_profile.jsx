@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SongList from './song_list';
+import FollowButtonContainer from '../buttons/follow_button_container';
 
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = props;
   }
 
   componentDidMount() {
@@ -17,11 +19,11 @@ class UserProfile extends React.Component {
     if (this.props.userId !== nextProps.userId) {
       this.props.fetchUser(nextProps.userId);
     }
-    this.setState(nextProps.songs);
+    this.setState(nextProps);
   }
 
   render() {
-    if (!this.props.user) {
+    if (!this.state.user) {
       return (
         <div>
           <h1>Loading...</h1>
@@ -32,16 +34,26 @@ class UserProfile extends React.Component {
           <div>
             <div className="user-banner">
               <div className="user-image-frame">
-                <img className="user-banner-img" src={this.props.user.imageUrl} />
+                <img className="user-banner-img" src={this.state.user.imageUrl} />
               </div>
               <div className="banner-content">
                 <div className="artist-title">
-                  {this.props.user.username}
+                  {this.state.user.username}
                 </div>
               </div>
             </div>
-            <SongList user={this.props.user}
-              songs={this.props.songs} />
+
+            <nav className="user-subnav">
+              <ul className="subnav-left">
+                <li>All</li>
+              </ul>
+              <div className="subnav-right">
+                <FollowButtonContainer userId={this.state.user.id} />
+              </div>
+            </nav>
+
+            <SongList user={this.state.user}
+              songs={this.state.songs} />
           </div>
       );
     }

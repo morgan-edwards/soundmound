@@ -1,20 +1,23 @@
 class Api::FollowsController < ApplicationController
 
   def create
-    debugger
     @follow = Follow.new(follow_params)
     if @follow.save
-      render json: ["sucess"], status: 200
+      @users = User.includes(:songs, :follows_as_follower, :follows_as_followee)
+                    .find(@follow.followee_id, @follow.follower_id)
+      render '/api/users/users'
     else
-      render json: @follow..errors.full_messages, status: 422
+      render json: @follow.errors.full_messages, status: 422
     end
   end
 
   def destroy
+    @follow = Follow.find_by(follow_params)
     follower = User.find(follow_params[:follower_id])
-    debugger
     if follower.followees.delete(User.find(follow_params[:followee_id]))
-      render json: {}
+      @users = User.includes(:songs, :follows_as_follower,
+        :follows_as_followee).find(@follow.followee_id, @follow.follower_id)
+      render '/api/users/users'
     else
       render json: @follow..errors.full_messages, status: 422
     end

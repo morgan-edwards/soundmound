@@ -80,7 +80,6 @@ class Upload extends React.Component {
       formData.append("song[image]", this.state.imageFile);
     }
     this.props.uploadSong(formData).then((res) => {
-      debugger
       return this.goHome(res);
     });
   }

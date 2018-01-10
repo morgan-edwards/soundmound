@@ -6,10 +6,11 @@ import {
 
 import {
   RECEIVE_USER,
+  RECEIVE_USERS
 } from '../actions/user_actions';
 
 const _nullUser = Object.freeze({
-  currentUser: null
+  currentUser: { id: null, username: null }
 });
 
 const sessionReducer = (state = _nullUser, action) => {
@@ -22,6 +23,13 @@ const sessionReducer = (state = _nullUser, action) => {
     case RECEIVE_USER:
       if (state.currentUser.id === action.user.id) {
         currentUser = action.user;
+        return merge({}, { currentUser });
+      } else {
+        return state;
+      }
+    case RECEIVE_USERS:
+      if (action.users[state.currentUser.id]) {
+        currentUser = action.users[state.currentUser.id];
         return merge({}, { currentUser });
       } else {
         return state;
