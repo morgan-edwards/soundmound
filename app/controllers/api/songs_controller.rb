@@ -25,6 +25,16 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(song_params[:user_id])
+    @song = user.songs.find(song_params[:id])
+    if @song.destroy!
+      render :show
+    else
+      render json: @song.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def song_params

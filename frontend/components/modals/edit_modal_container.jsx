@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import EditModal from './edit_modal';
 import { updateSong } from '../../actions/song_actions';
 import { toggleModal } from '../../actions/ui_actions';
+import { deleteSong } from '../../actions/song_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const formType = state.ui.modals.formType;
@@ -24,6 +25,7 @@ const mapDispatchToProps = dispatch => {
   return {
     updateSong: (formData) => dispatch(updateSong(formData)),
     toggleModal: (formType) => dispatch(toggleModal(formType)),
+    deleteSong: (songId) => dispatch(deleteSong(songId)),
   };
 };
 

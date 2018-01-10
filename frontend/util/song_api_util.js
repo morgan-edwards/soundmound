@@ -21,3 +21,17 @@ export const updateSong = (formData) => {
     })
   );
 };
+
+export const deleteSong = (song) => {
+  return (
+    $.ajax({
+      url: `api/songs/${song.id}`,
+      method: 'DELETE',
+      data: { song:
+              { id: song.id,
+                user_id: song.userId
+              }
+            }
+    })
+  );
+};

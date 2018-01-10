@@ -12,6 +12,11 @@
   margin-bottom: 50px;
   height: 100%;
   width: 90%;
+
+  button:hover {
+    border-color: $orange;
+    color: $orange;
+  }
 }
 
 .user-banner {

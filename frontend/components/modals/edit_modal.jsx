@@ -17,6 +17,7 @@ class EditModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goHome = this.goHome.bind(this);
     this.cancelForm = this.cancelForm.bind(this);
+    this.deleteSong = this.deleteSong.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,6 +50,22 @@ class EditModal extends React.Component {
     this.props.closeModal();
   }
 
+  deleteSong(e) {
+    e.preventDefault();
+    if (e) e.preventDefault();
+    this.setState({
+      formOpen: false,
+      uploading: false,
+      title: '',
+      audioFile: null,
+      imageFile: null,
+      imageUrl: this.props.song.imageUrl,
+      defaultFile: "",
+    });
+    this.props.deleteSong(this.props.song).then(() => (
+      this.props.closeModal()));
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.setState({uploading: true});
@@ -64,7 +81,6 @@ class EditModal extends React.Component {
   }
 
   goHome(res) {
-    console.log(res);
     return this.cancelForm();
   }
 
@@ -116,6 +132,8 @@ class EditModal extends React.Component {
                   <button onClick={this.handleSubmit}
                     className="save">Save</button>
                 </div>
+                <button onClick={this.deleteSong}
+                  className="save">Delete this song</button>
               </form>
             </div>
           </div>
