@@ -21,6 +21,12 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def followees
+    @user = User.find(params[:id])
+    @users = @user.followees.includes(:songs, :follows_as_followee, :followers, :follows_as_follower)
+    render '/api/users/users'
+  end
+
   private
 
   def user_params

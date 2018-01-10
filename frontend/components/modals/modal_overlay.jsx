@@ -6,7 +6,7 @@ class ModalOverlay extends React.Component {
   constructor(props){
     super(props);
     this.closeModal = this.closeModal.bind(this);
-    this.state = { animation: 'fadeIn', modalAnimation: 'bounceInDown' };
+    this.state = { animation: 'fadeIn', modalAnimation: 'slideInDown' };
   }
 
   componentWillUnmount() {
@@ -15,9 +15,9 @@ class ModalOverlay extends React.Component {
 
   closeModal(e) {
     if (!e || e.target === e.currentTarget) {
-      this.setState({ animation: 'fadeOut', modalAnimation: 'bounceOutUp' });
+      this.setState({ animation: 'fadeOut', modalAnimation: 'slideOutUp' });
       setTimeout(() => {
-        this.setState({ animation: 'fadeIn', modalAnimation: 'bounceInDown' });
+        this.setState({ animation: 'fadeIn', modalAnimation: 'slideInDown' });
         this.props.toggleModal(null);
       }, 500);
     }

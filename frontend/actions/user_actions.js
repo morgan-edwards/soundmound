@@ -5,7 +5,7 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 
-const formatUserSongs = (user, songsArray) => {
+export const formatUserSongs = (user, songsArray) => {
   if (songsArray) {
     songsArray.map(obj => obj['artist'] = user.username);
     let songsHash = songsArray.reduce((acc, song) => {
@@ -63,9 +63,9 @@ export const fetchUser = userId => dispatch => {
   );
 };
 
-export const fetchFollows = followerId => dispatch => {
+export const fetchFollowees = followerId => dispatch => {
   return (
-    UserAPI.fetchFollows(followerId).then((payload) => (
+    UserAPI.fetchFollowees(followerId).then((payload) => (
       dispatch(receiveUsers(payload))), err => (
         dispatch(receiveUserErrors(err.responseJSON))
     ))

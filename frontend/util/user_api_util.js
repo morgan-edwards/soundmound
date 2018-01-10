@@ -6,3 +6,12 @@ export const fetchUser = (userId) => {
     })
   );
 };
+
+export const fetchFollowees = (userId) => {
+  return (
+    $.ajax({
+      url: `api/users/${userId}/followees`,
+      method: 'GET',
+    })
+  );
+};

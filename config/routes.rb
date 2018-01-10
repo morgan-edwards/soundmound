@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show, :update]
+    get '/users/:id/followees', to: 'users#followees'
     resource :session, only: [:create, :destroy]
     resources :songs, only: [:create, :destroy, :update, :show]
     resources :follows, only: [:create]

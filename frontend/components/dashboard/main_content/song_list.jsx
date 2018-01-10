@@ -12,7 +12,7 @@ class SongList extends React.Component {
   }
 
   render() {
-    const songs = Object.values(this.state.songs).map(song => {
+    const songs =this.state.songs.map(song => {
       if (song) return <SongListItemContainer key={song.id} song={song} />;
       }
     );

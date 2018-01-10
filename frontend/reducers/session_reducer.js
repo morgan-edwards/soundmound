@@ -9,9 +9,7 @@ import {
   RECEIVE_USERS
 } from '../actions/user_actions';
 
-const _nullUser = Object.freeze({
-  currentUser: { id: null, username: null }
-});
+const _nullUser = Object.freeze({});
 
 const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);

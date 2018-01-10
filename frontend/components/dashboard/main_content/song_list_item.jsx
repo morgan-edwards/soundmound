@@ -27,10 +27,21 @@ class SongListItem extends React.Component {
 
   render() {
     const song = this.props.song;
+    const currentUserPage = this.props.currentUser.id === song.userId;
     const playButton = (this.state.currentlyPlayingId === song.id &&
                         this.state.playing) ?
                         <i className="fa fa-pause" aria-hidden="true"></i> :
                         <i className="fa fa-play" aria-hidden="true"></i>;
+
+    const footerControls = (currentUserPage) ?
+      <div className="self-controls">
+        <button onClick={this.openEditModal}>
+          Edit
+        </button>
+      </div>
+            :
+      <div>LIKE</div> ;
+
 
     return (
       <li key={song.id}
@@ -59,9 +70,7 @@ class SongListItem extends React.Component {
           </div>
 
           <div className="details-footer">
-            <button onClick={this.openEditModal}>
-              Edit
-            </button>
+            {footerControls}
           </div>
 
         </div>

@@ -28,7 +28,7 @@ const songsReducer = (state = _nullSongs, action) => {
       }
     case RECEIVE_SONG:
       newState = merge({}, state);
-      if (action.songs) {
+      if (action.song) {
         newState[action.song.id] = action.song;
       }
       return newState;

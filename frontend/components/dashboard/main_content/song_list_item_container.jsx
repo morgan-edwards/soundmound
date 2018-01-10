@@ -4,9 +4,10 @@ import { playSong, togglePause } from '../../../actions/playback_actions';
 import { toggleModal } from '../../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  const currentUser = state.session.currentUser;
   const song = ownProps.song;
   const playbackData = state.ui.playback;
-  return { song, playbackData };
+  return { currentUser, song, playbackData };
 };
 
 const mapDispatchToProps = dispatch => {

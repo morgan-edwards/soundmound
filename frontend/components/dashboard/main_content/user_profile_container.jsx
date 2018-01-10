@@ -10,7 +10,6 @@ const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[userId];
   const songs = userSongs(state, user);
   return { user, userId, songs, currentUser };
-
 };
 
 const mapDispatchToProps = dispatch => {
