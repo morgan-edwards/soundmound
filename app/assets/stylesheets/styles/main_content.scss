@@ -73,7 +73,7 @@
 }
 
 .song-list-details {
-
+  flex-grow: 1;
 }
 
 .details-header {
@@ -111,4 +111,14 @@
   border: none;
   margin: 0 0 0 2px;
   padding: 0;
+}
+
+.waveform {
+  height: 50px;
+  background-color: antiquewhite;
+}
+
+.waveform-progress {
+  background-color: cadetblue;
+  height: 100%;
 }

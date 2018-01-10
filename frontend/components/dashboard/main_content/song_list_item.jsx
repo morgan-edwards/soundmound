@@ -11,6 +11,7 @@ class SongListItem extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("updating");
     this.setState(nextProps.playbackData);
   }
 
@@ -43,6 +44,8 @@ class SongListItem extends React.Component {
             :
       <div>LIKE</div> ;
 
+    const progressWidth = Math.ceil(this.state.progress.played).toString() + "%";
+
 
     return (
       <li key={song.id}
@@ -67,6 +70,9 @@ class SongListItem extends React.Component {
           </div>
 
           <div className="waveform">
+            <div className="waveform-progress"
+                  style={{width: progressWidth}}>
+            </div>
           </div>
 
           <div className="details-footer">
