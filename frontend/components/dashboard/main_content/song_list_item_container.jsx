@@ -13,8 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     playSong: (id) => dispatch(playSong(id)),
-    togglePause: () => dispatch(togglePause()),
-    toggleModal: (formType, entityId) => dispatch(toggleModal(formType, entityId)),
+    toggleModal: (formType, entityId) => dispatch(toggleModal(formType, entityId))
   };
 };
 

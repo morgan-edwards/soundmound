@@ -71,3 +71,12 @@ export const fetchFollowees = followerId => dispatch => {
     ))
   );
 };
+
+export const updateUser = formData => dispatch => {
+  return (
+    UserAPI.updateUser(formData).then((user) => (
+      dispatch(receiveUser(user))), err => (
+        dispatch(receiveUserErrors(err.responseJSON))
+    ))
+  );
+};

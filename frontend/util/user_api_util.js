@@ -15,3 +15,15 @@ export const fetchFollowees = (userId) => {
     })
   );
 };
+
+export const updateUser = (formData) => {
+  return (
+    $.ajax({
+      url: `api/users/${formData.id}`,
+      method: 'PATCH',
+      data: formData,
+      contentType: false,
+      processData: false
+    })
+  );
+};

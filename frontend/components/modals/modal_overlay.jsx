@@ -1,6 +1,7 @@
 import React from 'react';
 import EditModalContainer from './edit_modal_container'
 import SessionFormContainer from './session_form_container'
+import EditProfileContainer from './Edit_Profile_container'
 
 class ModalOverlay extends React.Component {
   constructor(props){
@@ -35,6 +36,9 @@ class ModalOverlay extends React.Component {
         break;
       case 'signup':
         modalContent = <SessionFormContainer formType='signup' props={props}/>;
+        break;
+      case 'editProfile':
+        modalContent = <EditProfileContainer props={props}/>;
         break;
       default:
         modalContent = <div style={{display: "none"}}></div>;

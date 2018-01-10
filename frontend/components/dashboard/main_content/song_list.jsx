@@ -8,7 +8,6 @@ class SongList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("updating");
     this.setState(nextProps);
   }
 

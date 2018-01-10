@@ -1,18 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PlayButtonContainer from '../buttons/play_button_container';
+import PlayButtonContainer from '../playback_ui/play_button_container';
+import ProgressBarContainer from '../playback_ui/progress_bar_container';
 
 class SongListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.playbackData;
     this.handlePlay = this.handlePlay.bind(this);
     this.openEditModal = this.openEditModal.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log("updating");
-    this.setState(nextProps.playbackData);
   }
 
   handlePlay() {
@@ -28,24 +23,15 @@ class SongListItem extends React.Component {
   }
 
   render() {
+    const playbackData = this.props.playbackData;
     const song = this.props.song;
     const currentUserPage = this.props.currentUser.id === song.userId;
-    const playButton = (this.state.currentlyPlayingId === song.id &&
-                        this.state.playing) ?
-                        <i className="fa fa-pause" aria-hidden="true"></i> :
-                        <i className="fa fa-play" aria-hidden="true"></i>;
 
-    const footerControls = (currentUserPage) ?
-      <div className="self-controls">
+    const footerButtons = (currentUserPage) ?
         <button onClick={this.openEditModal}>
           Edit
-        </button>
-      </div>
-            :
-      <div>LIKE</div> ;
-
-    const progressWidth = Math.ceil(this.state.progress.played).toString() + "%";
-
+        </button> :
+        <button>LIKE</button> ;
 
     return (
       <li key={song.id}
@@ -61,7 +47,10 @@ class SongListItem extends React.Component {
             </div>
             <div className="detail-text">
               <div className="light-row">
-                {song.artist}
+                <Link to={`/artists/${song.userId}`}>
+                  {song.artist}
+                </Link>
+                <span>{song.fromNow}</span>
               </div>
               <div className="dark-row">
                 {song.title}
@@ -69,14 +58,12 @@ class SongListItem extends React.Component {
             </div>
           </div>
 
-          <div className="waveform">
-            <div className="waveform-progress"
-                  style={{width: progressWidth}}>
-            </div>
-          </div>
+          <ProgressBarContainer song={song} />
 
           <div className="details-footer">
-            {footerControls}
+            <div className="self-controls">
+              {footerButtons}
+            </div>
           </div>
 
         </div>

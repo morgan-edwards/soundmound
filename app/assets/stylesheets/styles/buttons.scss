@@ -1,0 +1,29 @@
+@import "../base/variables.scss";
+
+.global-play-btn {
+  border: none;
+  margin: 0 0 0 2px;
+  padding: 0;
+}
+
+.subnav-button {
+  border: 1px solid $lightest-gray;
+
+  span {
+    padding-left: 5px;
+  }
+}
+
+.subnav-button:hover {
+  border: 1px solid $light-gray;
+  color: $dark-gray;
+}
+
+.following-button {
+  color: $orange;
+}
+
+.following-button:hover, .follow-button:hover {
+  border-color: $orange;
+  color: $orange;
+}
