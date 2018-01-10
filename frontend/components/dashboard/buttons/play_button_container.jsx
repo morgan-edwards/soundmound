@@ -6,7 +6,7 @@ import {
   setVolume,
   updateProgress,
   setDuration,
-} from '../../actions/playback_actions';
+} from '../../../actions/playback_actions';
 
 import PlayButton from './play_button';
 
@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   const playbackData = state.ui.playback;
   const song = ownProps.song
   return {
-    currentSong,
+    song,
     playbackData
   };
 };

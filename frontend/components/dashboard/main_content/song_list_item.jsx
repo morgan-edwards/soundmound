@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PlayButtonContainer from '../buttons/play_button_container';
 
 class SongListItem extends React.Component {
   constructor(props) {
@@ -52,10 +53,9 @@ class SongListItem extends React.Component {
         <div className="song-list-details">
 
           <div className="details-header">
-            <button className="list-play"
-              onClick={this.handlePlay}>
-              {playButton}
-            </button>
+            <div className="list-play">
+              <PlayButtonContainer song={song} />
+            </div>
             <div className="detail-text">
               <div className="light-row">
                 {song.artist}
