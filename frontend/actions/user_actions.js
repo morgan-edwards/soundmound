@@ -7,7 +7,7 @@ export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 
 export const formatUserSongs = (user, songsArray) => {
   if (songsArray) {
-    songsArray.map(obj => obj['artist'] = user.username);
+    songsArray.map(song => Object.assign(song, { artist: user.username }));
     let songsHash = songsArray.reduce((acc, song) => {
       acc[song.id] = song;
       return acc;

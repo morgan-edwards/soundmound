@@ -1,3 +1,11 @@
+const moment = require('moment');
+
+const momentify = (songArray) => {
+  return songArray.map(song =>
+    Object.assign(song, { fromNow: moment(song.createdAt).fromNow() })
+  );
+};
+
 const sortSongs = (songs) => {
   return songs.sort((a,b) => {
     return new Date(b.createdAt) - new Date(a.createdAt);
@@ -16,6 +24,7 @@ export const followeeSongs = (state, user) => {
     const followeeSongs = userSongs(state, followee);
     songs = songs.concat(followeeSongs);
   });
+  songs = momentify(songs);
   return sortSongs(songs);
 };
 
