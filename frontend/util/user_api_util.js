@@ -19,7 +19,7 @@ export const fetchFollowees = (userId) => {
 export const updateUser = (formData) => {
   return (
     $.ajax({
-      url: `api/users/${formData.id}`,
+      url: `api/users`,
       method: 'PATCH',
       data: formData,
       contentType: false,

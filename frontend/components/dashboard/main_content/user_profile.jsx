@@ -29,15 +29,22 @@ class UserProfile extends React.Component {
         </div>
       );
     } else {
-
+        const currentUser = this.props.currentUser;
+        const backgroundUrl = this.props.user.bannerUrl;
         const userId = this.props.user.id;
-        const rightButton = (this.props.currentUser &&  userId === this.props.currentUser.id) ?
+        const rightButton = (currentUser &&  userId === this.props.currentUser.id) ?
                             <EditProfileButton userId={userId} /> :
                             <FollowButtonContainer userId={userId} />;
 
+        const background = (backgroundUrl) ? { "background": `url(${backgroundUrl})`,
+                                                "background-size": "cover",
+                                                "background-position": "center center",
+                                                "background-repeat": "no-repeat",
+                                              } : {};
+
         return (
           <div>
-            <div className="user-banner">
+            <div className="user-banner" style={background}>
               <div className="user-image-frame">
                 <img className="user-banner-img" src={this.props.user.imageUrl} />
               </div>

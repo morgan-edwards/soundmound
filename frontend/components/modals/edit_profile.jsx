@@ -71,7 +71,7 @@ class EditProfile extends React.Component {
     formData.append("user[username]", this.state.username);
 
     if (this.state.bannerFile) {
-      formData.append("user[banner]", this.state.audioFile);
+      formData.append("user[banner]", this.state.bannerFile);
     }
     if (this.state.imageFile) {
       formData.append("user[image]", this.state.imageFile);
@@ -79,7 +79,7 @@ class EditProfile extends React.Component {
     this.props.updateUser(formData).then(this.goHome);
   }
 
-  goHome(res) {
+  goHome() {
     return this.cancelForm();
   }
 
@@ -147,7 +147,7 @@ class EditProfile extends React.Component {
                 <button onClick={this.cancelForm}
                   className="cancel">Cancel</button>
                 <button onClick={this.handleSubmit}
-                  className="save">Save</button>
+                  className="save">Update</button>
               </div>
             </form>
           </div>

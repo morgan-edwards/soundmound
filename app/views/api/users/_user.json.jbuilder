@@ -6,6 +6,7 @@ follower_ids = user.follows_as_followee.map(&:follower_id)
 json.user do
   json.extract! user, :id, :username
   json.imageUrl asset_path(user.image.url)
+  json.bannerUrl asset_path(user.banner.url)
   json.songIds song_ids
   json.followerIds follower_ids
   json.followeeIds followee_ids

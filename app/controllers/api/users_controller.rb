@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params[:username], user_params[:password])
 
     if @user.save
       login(@user)
@@ -21,6 +21,25 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(user_params[:id])
+    if @user.id != current_user.id
+      render json: ["Unauthorized update"], status: 422
+    end
+    @user.username = user_params[:username]
+    if user_params[:image]
+      @user.image = user_params[:image]
+    end
+    if user_params[:banner]
+      @user.banner = user_params[:banner]
+    end
+    if @user.save!
+      render :show
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
+  end
+
   def followees
     @user = User.find(params[:id])
     @users = @user.followees.includes(:songs, :follows_as_followee, :followers, :follows_as_follower)
@@ -30,6 +49,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :banner, :image, :id)
   end
 end
