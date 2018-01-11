@@ -16,10 +16,9 @@ class Api::SongsController < ApplicationController
     render '/api/users/show'
   end
 
-
   def update
-    @user = User.includes(:songs).find.(song_params[:user_id])
-    song = user.songs.find(song_params[:id])
+    @user = User.find(song_params[:user_id])
+    song = @user.songs.find(song_params[:id])
     song.title = song_params[:title]
 
     if song_params[:image]
