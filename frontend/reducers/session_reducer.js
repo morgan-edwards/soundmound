@@ -19,7 +19,7 @@ const sessionReducer = (state = _nullUser, action) => {
       currentUser = action.currentUser;
       return merge({}, { currentUser });
     case RECEIVE_USER:
-      if (state.currentUser.id === action.user.id) {
+      if (currentUser && state.currentUser.id === action.user.id) {
         currentUser = action.user;
         return merge({}, { currentUser });
       } else {

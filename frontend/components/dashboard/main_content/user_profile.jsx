@@ -31,7 +31,7 @@ class UserProfile extends React.Component {
     } else {
 
         const userId = this.props.user.id;
-        const rightButton = (userId === this.props.currentUser.id) ?
+        const rightButton = (this.props.currentUser &&  userId === this.props.currentUser.id) ?
                             <EditProfileButton userId={userId} /> :
                             <FollowButtonContainer userId={userId} />;
 

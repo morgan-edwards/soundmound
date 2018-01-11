@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_attached_file :image, default_url: "user_default.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :banner
+  has_attached_file :banner, default_url: ""
   validates_attachment_content_type :banner, content_type: /\Aimage\/.*\z/
 
   has_many :songs,

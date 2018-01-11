@@ -16,19 +16,19 @@ class UserNavBar extends React.Component {
 
   logoutRedirect() {
     return (
-      this.props.props.logout().then(() => this.props.props.history.push("/logout"))
+      this.props.props.logout().then(() => this.props.history.push("/"))
     );
   }
 
   render() {
-    const { currentUser, logoutRedirect, history } = this.props.props;
+    const { currentUser } = this.props.props;
 
     return (
       <div className="navbar-content">
         <nav className="navbar-left">
 
           <button className="navbar-logo"
-            onClick={() => history.push("/")}>
+            onClick={() => this.props.history.push("/")}>
             <i className="fa fa-cloud" aria-hidden="true" />
           </button>
 
@@ -93,4 +93,4 @@ class UserNavBar extends React.Component {
   }
 }
 
-export default UserNavBar;
+export default withRouter(UserNavBar);

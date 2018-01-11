@@ -7,8 +7,8 @@ const FollowButton = (props) => {
                   props.unfollow :
                   props.follow;
   const styleClass = isFollowed ? 'following-button' : 'follow-button';
-  
-  if (props.userId !== props.currentUser.id) {
+
+  if (props.currentUser && props.userId !== props.currentUser.id) {
     return (
       <button onClick={() => action(props.currentUser.id, props.userId)}
         className={`${styleClass}`}>

@@ -4,11 +4,9 @@ import { follow, unfollow } from '../../../actions/follow_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.userId;
-  const followees = state.session.currentUser.followeeIds;
-  const loggedIn = Boolean(state.session.currentUser);
   const currentUser = state.session.currentUser;
+  const followees = (currentUser) ? state.session.currentUser.followeeIds : [];
   return { followees,
-            loggedIn,
             userId,
             currentUser,
           };
