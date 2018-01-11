@@ -91,9 +91,11 @@ class EditProfile extends React.Component {
 
   render() {
     const background = (this.state.bannerUrl) ? { "background": `url(${this.state.bannerUrl})`,
-                                                  "background-size": "100%",
-                                                  "background-position": "center",
+                                                  "backgroundSize": "cover",
+                                                  "backgroundPosition": "center center",
+                                                  "backgroundRepeat": "no-repeat",
                                                 } : {};
+
     return (
       <div className={`animated ${this.state.animation} form-container edit-container`}>
         <div className="modal-form">

@@ -13,14 +13,13 @@ const _nullUser = Object.freeze({});
 
 const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
-  debugger
   let currentUser;
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       currentUser = action.currentUser;
       return merge({}, { currentUser });
     case RECEIVE_USER:
-      if (currentUser && state.currentUser.id === action.user.id) {
+      if (state.currentUser && state.currentUser.id === action.user.id) {
         currentUser = action.user;
         return merge({}, { currentUser });
       } else {

@@ -40,6 +40,11 @@
 
 .user-banner-img {
   width: 200px;
+  object-fit: cover;
+  min-height: 200px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: "no-repeat",
 }
 
 .banner-content {

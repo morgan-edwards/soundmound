@@ -37,9 +37,9 @@ class UserProfile extends React.Component {
                             <FollowButtonContainer userId={userId} />;
 
         const background = (backgroundUrl) ? { "background": `url(${backgroundUrl})`,
-                                                "background-size": "cover",
-                                                "background-position": "center center",
-                                                "background-repeat": "no-repeat",
+                                                "backgroundSize": "cover",
+                                                "backgroundPosition": "center center",
+                                                "backgroundRepeat": "no-repeat",
                                               } : {};
 
         return (
