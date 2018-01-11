@@ -1,7 +1,7 @@
 import React from 'react';
 import EditModalContainer from './edit_modal_container'
 import SessionFormContainer from './session_form_container'
-import EditProfileContainer from './Edit_Profile_container'
+import EditProfileContainer from './edit_profile_container'
 
 class ModalOverlay extends React.Component {
   constructor(props){
