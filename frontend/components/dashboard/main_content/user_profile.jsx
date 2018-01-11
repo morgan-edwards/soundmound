@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SongList from './song_list';
 import SidebarContainer from './sidebar_container';
+import LoadingAnimation from './loading_animation';
 import FollowButtonContainer from '../buttons/follow_button_container';
 import EditProfileButton from '../buttons/edit_profile_button';
 
@@ -25,9 +26,7 @@ class UserProfile extends React.Component {
   render() {
     if (!this.props.user) {
       return (
-        <div>
-          <h1>Loading...</h1>
-        </div>
+        <LoadingAnimation />
       );
     } else {
         const currentUser = this.props.currentUser;
