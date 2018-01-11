@@ -23,7 +23,7 @@ class ModalOverlay extends React.Component {
       }, 500);
     }
   }
-
+  
   render() {
     let modalContent;
     const props = { animation: this.state.modalAnimation, closeModal: this.closeModal };
