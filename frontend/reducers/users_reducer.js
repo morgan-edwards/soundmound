@@ -9,11 +9,14 @@ const _nullUsers = Object.freeze({});
 
 const usersReducer = (state = _nullUsers, action) => {
   Object.freeze(state);
+  let newState;
   switch(action.type) {
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: action.user });
     case RECEIVE_USERS:
-      return merge({}, state, action.users);
+      newState = Object.assign({}, state);
+      newState = Object.assign(newState, action.users);
+      return newState;
     case RECEIVE_CURRENT_USER:
       if (action.currentUser) {
         return merge({}, { [action.currentUser.id]: action.currentUser });

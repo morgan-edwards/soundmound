@@ -27,3 +27,7 @@ export const followeeSongs = (state, user) => {
   songs = momentify(songs);
   return sortSongs(songs);
 };
+
+export const mapUsers = (state, ids) => {
+  return ids.map(id => state.entities.users[id]);
+};

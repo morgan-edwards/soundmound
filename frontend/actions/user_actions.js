@@ -60,15 +60,6 @@ export const receiveUserErrors = errors => {
 export const fetchUser = userId => dispatch => {
   return (
     UserAPI.fetchUser(userId).then((payload) => (
-      dispatch(receiveUser(payload))), err => (
-        dispatch(receiveUserErrors(err.responseJSON))
-    ))
-  );
-};
-
-export const fetchFollowees = followerId => dispatch => {
-  return (
-    UserAPI.fetchFollowees(followerId).then((payload) => (
       dispatch(receiveUsers(payload))), err => (
         dispatch(receiveUserErrors(err.responseJSON))
     ))

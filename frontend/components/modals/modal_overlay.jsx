@@ -10,6 +10,15 @@ class ModalOverlay extends React.Component {
     this.state = { animation: 'fadeIn', modalAnimation: 'slideInDown' };
   }
 
+  componentWillReceiveProps(nextProps) {
+
+    if (this.props.modalIsOpen !== nextProps.modalIsOpen) {
+      (nextProps.modalIsOpen) ?
+      document.getElementsByTagName('body')[0].classList.add('locked') :
+      document.getElementsByTagName('body')[0].classList.remove('locked');
+    }
+  }
+
   componentWillUnmount() {
     this.setState({ animation: 'fadeOut'});
   }
@@ -23,7 +32,7 @@ class ModalOverlay extends React.Component {
       }, 500);
     }
   }
-  
+
   render() {
     let modalContent;
     const props = { animation: this.state.modalAnimation, closeModal: this.closeModal };

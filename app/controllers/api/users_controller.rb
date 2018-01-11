@@ -1,7 +1,8 @@
 class Api::UsersController < ApplicationController
 
   def create
-    @user = User.new(user_params[:username], user_params[:password])
+    login_params = { username: user_params[:username],  password: user_params[:password]}
+    @user = User.new(login_params)
 
     if @user.save
       login(@user)
@@ -12,10 +13,18 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
+
+    @users = User.includes(
+        :songs,
+        :followers,
+        :followees,
+        :follows_as_followee,
+        :follows_as_follower
+    ).where(id: @user.followee_ids + @user.follower_ids + [@user.id])
 
     if @user
-      render :show
+      render '/api/users/users'
     else
       render json: ["User not found"], status: 404
     end

@@ -8,7 +8,7 @@ class Stream extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchFollowees(this.props.currentUser.id);
+    this.props.fetchUser(this.props.currentUser.id);
   }
 
   componentWillReceiveProps(nextProps) {
