@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import SearchbarContainer from '../dashboard/search/searchbar_container';
 
 const Hero = (props) => {
   if (props.loggedIn) {
@@ -28,7 +29,7 @@ const Hero = (props) => {
             <div className="hero-content">
               <h1>Connect on SoundMound</h1>
               <p>Discover, stream, and share some real tight music on a super
-                slow, ad-free, groundbreaking site</p>
+                sick mound, ad-free, groundbreaking site mound of sound</p>
               <button className="orange-btn"
                 onClick={() => props.login({username: "Guest", password: "password"})}>
                 Login as Guest
@@ -36,6 +37,10 @@ const Hero = (props) => {
             </div>
           </div>
 
+          <div className="landing-search">
+            <h1>Search the mound to get started!</h1>
+            <SearchbarContainer />
+          </div>
         </div>
       </div>
     );

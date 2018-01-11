@@ -44,3 +44,12 @@ export const deleteSong = (song) => {
     })
   );
 };
+
+export const searchSongs = (query) => {
+  return (
+    $.ajax({
+      url: `api/search/${escape(query)}`,
+      method: 'GET',
+    })
+  );
+};

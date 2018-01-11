@@ -1,9 +1,50 @@
 @import "../base/variables.scss";
 
+$navbar-width: 815px;
+
 .landing-container {
   background-color: $lightest-gray;
   height: 100%;
   font-family: $font-stack;
+}
+
+.landing-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 260px;
+
+  h1 {
+    color: $gray;
+    font-size: 52px;
+  }
+
+  .navbar-search {
+    width: $navbar-width;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+
+    .navbar-search-input {
+      height: 50px;
+      width: $navbar-width;
+      border: 1px solid $light-gray;
+      background-color: $lightest-gray;
+      font-size: 22px;
+      margin-left: 0px;
+    }
+
+    .navbar-search-submit {
+      height: 50px;
+      width: 50px;
+      font-size: 22px;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+    }
+  }
 }
 
 .landing-content {

@@ -18,9 +18,9 @@ class Stream extends React.Component {
   render() {
     return (
       <div className="stream">
-        <nav className="stream-subnav">
+        <nav className="user-subnav">
           <ul className="subnav-left">
-            <li>Stream</li>
+            <li>New sounds from the artists you follow</li>
           </ul>
         </nav>
 

@@ -11,9 +11,13 @@
 #
 
 class Song < ApplicationRecord
+  include PgSearch
+  multisearchable :against => [:title, :artist]
+
   validates :title, :user_id, presence: true
 
-  belongs_to :user
+  belongs_to :user,
+    touch: true
 
   has_attached_file :image, default_url: :define_default_img
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -28,6 +32,10 @@ class Song < ApplicationRecord
   end
 
   private
+
+  def artist
+    self.user.username
+  end
 
   def define_default_img
     user.image.url

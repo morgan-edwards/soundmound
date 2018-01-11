@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :songs, only: [:create, :destroy, :update, :show]
     resources :follows, only: [:create]
     post '/unfollow', to: 'follows#destroy'
+    get '/search/:query', to: 'songs#search'
   end
 end

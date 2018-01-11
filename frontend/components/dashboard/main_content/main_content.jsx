@@ -5,6 +5,7 @@ import StreamContainer from './stream_container';
 import UserProfileContainer from './user_profile_container';
 import UploadContainer from './upload_container';
 import SoundShowContainer from './sound_show_container';
+import SearchResultsContainer from './search_results_container'
 import { AuthRoute, ProtectedRoute } from '../../../util/route_util';
 
 const MainContent = (props) => {
@@ -18,6 +19,7 @@ const MainContent = (props) => {
           <ProtectedRoute path="/upload" component={UploadContainer} />
           <Route path="/artists/:userId" component={UserProfileContainer} />
           <Route path="/sounds/:songId" component={SoundShowContainer} />
+          <Route path="/search" component={SearchResultsContainer} />
         </Switch>
       </div>
     </div>

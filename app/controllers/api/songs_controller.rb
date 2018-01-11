@@ -1,4 +1,5 @@
 class Api::SongsController < ApplicationController
+  require 'uri'
 
   def create
     @user = User.find(song_params[:user_id])
@@ -40,6 +41,13 @@ class Api::SongsController < ApplicationController
     else
       render json: @song.errors.full_messages, status: 422
     end
+  end
+
+  def search
+    query = CGI::unescape(params[:query])
+    song_ids = PgSearch.multisearch(query).map(&:searchable_id)
+    @songs = Song.includes(:user).where(id: song_ids)
+    render '/api/songs/songs'
   end
 
   private
