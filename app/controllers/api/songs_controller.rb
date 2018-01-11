@@ -1,27 +1,35 @@
 class Api::SongsController < ApplicationController
 
   def create
-    @song = User.find(song_params[:user_id]).songs.new(song_params)
+    @user = User.find(song_params[:user_id])
+    @song = @user.songs.new(song_params)
     if @song.save!
-      render :show
+      render '/api/users/show'
     else
       render json: @song.errors.full_messages, status: 422
     end
   end
 
+  def show
+    @song = Song.find(params[:id])
+    @user = @song.user
+    render '/api/users/show'
+  end
+
+
   def update
-    user = User.find(song_params[:user_id])
-    @song = user.songs.find(song_params[:id])
-    @song.title = song_params[:title]
+    @user = User.includes(:songs).find.(song_params[:user_id])
+    song = user.songs.find(song_params[:id])
+    song.title = song_params[:title]
 
     if song_params[:image]
-      @song.image = song_params[:image]
+      song.image = song_params[:image]
     end
 
-    if @song.save!
-      render :show
+    if song.save!
+      render '/api/users/show'
     else
-      render json: @song.errors.full_messages, status: 422
+      render json: song.errors.full_messages, status: 422
     end
   end
 

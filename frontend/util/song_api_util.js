@@ -1,3 +1,12 @@
+export const fetchSong = (songId) => {
+  return (
+    $.ajax({
+      url: `api/songs/${songId}`,
+      method: 'GET',
+    })
+  );
+};
+
 export const uploadSong = (formData) => {
   return (
     $.ajax({

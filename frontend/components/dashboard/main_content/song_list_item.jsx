@@ -53,7 +53,9 @@ class SongListItem extends React.Component {
                 <span>{song.fromNow}</span>
               </div>
               <div className="dark-row">
-                {song.title}
+                <Link to={`/sounds/${song.id}`}>
+                  {song.title}
+                </Link>
               </div>
             </div>
           </div>

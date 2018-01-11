@@ -83,6 +83,7 @@ class Player extends React.Component {
 
             <ReactPlayer url={currentSong.trackUrl}
               ref={this.ref}
+              progressFrequency={50}
               playing={playing}
               onDuration={(d) => setDuration(d)}
               onProgress={(p) => updateProgress(p)}

@@ -27,8 +27,3 @@ export const followeeSongs = (state, user) => {
   songs = momentify(songs);
   return sortSongs(songs);
 };
-
-
-
-// Turn your strings into dates, and then subtract them
-// to get a value that is either negative, positive, or zero.

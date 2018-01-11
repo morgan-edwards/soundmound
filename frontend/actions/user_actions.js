@@ -1,13 +1,16 @@
 import * as UserAPI from '../util/user_api_util';
 import { merge } from 'lodash';
 
+const moment = require('moment');
+
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 
 export const formatUserSongs = (user, songsArray) => {
   if (songsArray) {
-    songsArray.map(song => Object.assign(song, { artist: user.username }));
+    songsArray.map(song => Object.assign(song, { artist: user.username,
+                                                fromNow: moment(song.createdAt).fromNow() }));
     let songsHash = songsArray.reduce((acc, song) => {
       acc[song.id] = song;
       return acc;

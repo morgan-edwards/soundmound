@@ -36,6 +36,8 @@ gem 'aws-sdk', '< 3.0'
 gem 'figaro'
 #data helper gems
 gem 'ruby-mp3info', :require => 'mp3info'
+#Searching functionality
+gem 'pg_search'
 
 
 # Use Capistrano for deployment
