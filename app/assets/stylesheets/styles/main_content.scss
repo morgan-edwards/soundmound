@@ -65,8 +65,25 @@
   align-items: center;
 
   .subnav-left {
-    font-size: 34px;
+    font-size: 24px;
     padding-top: 15px;
+    display: flex;
+
+    li {
+      margin-left: 20px;
+      margin-bottom: -12px;
+      cursor: pointer;
+    }
+
+    li:hover {
+      color: $orange;
+    }
+
+
+    .selected {
+      color: $orange;
+      border-bottom: 1px solid $orange;
+    }
   }
 }
 

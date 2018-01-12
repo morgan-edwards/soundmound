@@ -53,3 +53,12 @@ export const searchSongs = (query) => {
     })
   );
 };
+
+export const suggestedSongs = (query) => {
+  return (
+    $.ajax({
+      url: `api/suggested/songs`,
+      method: 'GET',
+    })
+  );
+};

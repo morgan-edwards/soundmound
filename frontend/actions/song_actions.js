@@ -28,7 +28,15 @@ export const receiveSongSearch = (songs, query) => {
     songs,
     query,
   };
+};
 
+export const receiveSuggestedSongs = (songs) => {
+  const suggestions = songs.map(song => song.id);
+  return {
+    type: RECEIVE_SONGS,
+    suggestions,
+    songs,
+  };
 };
 
 export const receiveSongErrors = (errors) => {
@@ -79,6 +87,15 @@ export const searchSongs = (query) => dispatch => {
   return (
     SongAPI.searchSongs(query).then((songs) => (
       dispatch(receiveSongSearch(songs, query))), err => (
+        dispatch(receiveSongErrors(err.responseJSON))
+    ))
+  );
+};
+
+export const fetchSuggested = () => dispatch => {
+  return (
+    SongAPI.suggestedSongs().then((songs) => (
+      dispatch(receiveSuggestedSongs(songs))), err => (
         dispatch(receiveSongErrors(err.responseJSON))
     ))
   );

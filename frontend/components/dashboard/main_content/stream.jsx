@@ -4,28 +4,42 @@ import SongListContainer from './song_list_container';
 class Stream extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props;
+    this.state = { view: "suggested" };
+    this.setView = this.setView.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.currentUser.id);
+    this.props.fetchSuggested();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps);
+  setView(view) {
+    return () => {
+      this.setState({ view });
+    };
   }
 
   render() {
+    const content = (this.state.view === "suggested") ?
+      <SongListContainer user={this.props.currentUser}
+        songs={this.props.suggestedSongs} /> :
+      <SongListContainer user={this.props.currentUser}
+        songs={this.props.followedSongs} />;
+
     return (
       <div className="stream">
         <nav className="user-subnav">
           <ul className="subnav-left">
-            <li>New sounds from the artists you follow</li>
+            <li onClick={this.setView('suggested')}
+                className={(this.state.view === 'suggested') ? "selected" : "" }>
+              Suggested sounds</li>
+            <li onClick={this.setView('following')}
+                className={(this.state.view === 'following') ? "selected" : "" }>
+              Artists you follow</li>
           </ul>
         </nav>
 
-        <SongListContainer user={this.state.user}
-          songs={this.state.songs} />
+        { content }
 
       </div>
     );

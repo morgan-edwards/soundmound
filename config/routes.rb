@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/users/:id/followees', to: 'users#followees'
     resource :session, only: [:create, :destroy]
     resources :songs, only: [:create, :destroy, :update, :show]
+    get '/suggested/songs', to: 'songs#suggested'
     resources :follows, only: [:create]
     post '/unfollow', to: 'follows#destroy'
     get '/search/:query', to: 'songs#search'

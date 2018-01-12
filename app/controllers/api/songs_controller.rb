@@ -50,6 +50,11 @@ class Api::SongsController < ApplicationController
     render '/api/songs/songs'
   end
 
+  def suggested
+    @songs = Song.find(Song.ids.sample(10))
+    render '/api/songs/songs'
+  end
+
   private
 
   def song_params
