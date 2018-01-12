@@ -4,6 +4,7 @@ class Api::SongsController < ApplicationController
   def create
     @user = User.find(song_params[:user_id])
     @song = @user.songs.new(song_params)
+    debugger
     if @song.save!
       render '/api/users/show'
     else
@@ -20,6 +21,7 @@ class Api::SongsController < ApplicationController
   def update
     @user = User.find(song_params[:user_id])
     song = @user.songs.find(song_params[:id])
+    debugger
     song.title = song_params[:title]
 
     if song_params[:image]

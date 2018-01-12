@@ -9,8 +9,8 @@ class Upload extends React.Component {
       formOpen: false,
       uploading: false,
       title: '',
-      audioFile: null,
-      imageFile: null,
+      audioFile: "",
+      imageFile: "",
       imageUrl: props.currentUser.imageUrl,
       defaultFile: "",
     };
@@ -57,15 +57,14 @@ class Upload extends React.Component {
       formOpen: false,
       uploading: false,
       title: '',
-      audioFile: null,
-      imageFile: null,
-      imageUrl: this.props.currentUser.imageUrl,
+      audioFile: "",
+      imageFile: "",
+      imageUrl: "",
       defaultFile: "",
     });
   }
 
   goHome(res) {
-    console.log(res);
     return this.props.history.push(`/artists/${this.props.currentUser.id}`);
   }
 
@@ -76,7 +75,7 @@ class Upload extends React.Component {
     formData.append("song[user_id]", this.props.currentUser.id);
     formData.append("song[title]", this.state.title);
     formData.append("song[track]", this.state.audioFile);
-    if (this.state.imageFile) {
+    if (this.state.imageFile !== "") {
       formData.append("song[image]", this.state.imageFile);
     }
     this.props.uploadSong(formData).then((res) => {

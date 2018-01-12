@@ -6,9 +6,9 @@ class EditProfile extends React.Component {
     this.state = {
       formOpen: false,
       username: props.currentUser.username,
-      imageFile: null,
+      imageFile: "",
       imageUrl: props.currentUser.imageUrl,
-      bannerFile: null,
+      bannerFile: "",
       bannerUrl: props.currentUser.bannerUrl,
       defaultFile: "",
       animation: props.animation,
@@ -53,11 +53,11 @@ class EditProfile extends React.Component {
     if (e) e.preventDefault();
     this.setState({
       formOpen: false,
-      username: null,
-      imageFile: null,
-      imageUrl: null,
-      bannerFile: null,
-      bannerUrl: null,
+      username: "",
+      imageFile: "",
+      imageUrl: "",
+      bannerFile: "",
+      bannerUrl: "",
       defaultFile: "",
     });
     this.props.closeModal();
@@ -70,10 +70,10 @@ class EditProfile extends React.Component {
     formData.append("user[id]", this.props.currentUser.id);
     formData.append("user[username]", this.state.username);
 
-    if (this.state.bannerFile) {
+    if (this.state.bannerFile !== "") {
       formData.append("user[banner]", this.state.bannerFile);
     }
-    if (this.state.imageFile) {
+    if (this.state.imageFile !== "") {
       formData.append("user[image]", this.state.imageFile);
     }
     this.props.updateUser(formData).then(this.goHome);

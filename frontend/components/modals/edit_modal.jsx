@@ -7,7 +7,7 @@ class EditModal extends React.Component {
       formOpen: false,
       uploading: false,
       title: props.song.title,
-      imageFile: null,
+      imageFile: "",
       imageUrl: props.song.imageUrl,
       defaultFile: "",
       animation: props.animation,
@@ -41,10 +41,9 @@ class EditModal extends React.Component {
     this.setState({
       formOpen: false,
       uploading: false,
-      title: '',
-      audioFile: null,
-      imageFile: null,
-      imageUrl: this.props.song.imageUrl,
+      title: "",
+      imageFile: "",
+      imageUrl: "",
       defaultFile: "",
     });
     this.props.closeModal();
@@ -56,10 +55,9 @@ class EditModal extends React.Component {
     this.setState({
       formOpen: false,
       uploading: false,
-      title: '',
-      audioFile: null,
-      imageFile: null,
-      imageUrl: this.props.song.imageUrl,
+      title: "",
+      imageFile: "",
+      imageUrl: "",
       defaultFile: "",
     });
     this.props.deleteSong(this.props.song).then(() => (
@@ -71,10 +69,9 @@ class EditModal extends React.Component {
     this.setState({uploading: true});
     const formData = new FormData();
     formData.append("song[id]", this.props.song.id);
-    formData.append("song[user_id]", this.props.currentUser.id);
     formData.append("song[title]", this.state.title);
-    formData.append("song[track]", this.state.audioFile);
-    if (this.state.imageFile) {
+    formData.append("song[user_id]", this.props.currentUser.id);
+    if (this.state.imageFile !== "") {
       formData.append("song[image]", this.state.imageFile);
     }
     this.props.updateSong(formData).then(this.goHome);
