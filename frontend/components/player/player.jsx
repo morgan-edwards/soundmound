@@ -13,10 +13,6 @@ class Player extends React.Component {
     this.updateProgress = this.updateProgress.bind(this);
   }
 
-  componentWillRecieveProps(nextProps) {
-    this.setState
-  }
-
   updateProgress(p){
     this.props.updateProgress(p);
     if (!this.state.seeking) {

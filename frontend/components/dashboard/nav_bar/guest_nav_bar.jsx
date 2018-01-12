@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
+import SearchbarContainer from '../search/searchbar_container';
 
 class GuestNavBar extends React.Component {
   constructor(props) {
@@ -31,15 +32,8 @@ class GuestNavBar extends React.Component {
 
         </nav>
 
-        <div className="navbar-middle flex-nav">
-          <form className="navbar-search" >
-            <input className="navbar-search-input"
-              placeholder="Search"
-              type="search"/>
-            <button className="navbar-search-submit">
-              <i className="fa fa-search" aria-hidden="true"></i>
-            </button>
-          </form>
+        <div className="navbar-middle">
+          <SearchbarContainer />
         </div>
 
         <nav className="navbar-right flex-nav">

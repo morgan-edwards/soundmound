@@ -36,7 +36,7 @@ class UserProfile extends React.Component {
                             <EditProfileButton userId={userId} /> :
                             <FollowButtonContainer userId={userId} />;
         const name = (currentUser &&  userId === this.props.currentUser.id) ?
-                          "Your" : `${this.props.user.username}s`;
+                          "Your" : `${this.props.user.username}'s`;
 
         const background = (backgroundUrl) ? { "background": `url(${backgroundUrl})`,
                                                 "backgroundSize": "100%",
@@ -59,7 +59,7 @@ class UserProfile extends React.Component {
 
             <nav className="user-subnav">
               <ul className="subnav-left">
-                <li>{`${name}'s sounds`}</li>
+                <li>{`${name} sounds`}</li>
               </ul>
               <div className="subnav-right">
                 {rightButton}
