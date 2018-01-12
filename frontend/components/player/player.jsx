@@ -5,20 +5,32 @@ import { ProgressBar, VolumeSlider, FormattedTime } from 'react-player-controls'
 class Player extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      curentSong: props.currentSong,
-      playbackData: props.playbackData,
-      lastSeekStart: 0,
-      lastSeekEnd: 0,
-      lastIntent: 0,
-    };
+    this.state = { progress: this.props.playbackData.progress.played };
     this.setVolume = this.setVolume.bind(this);
     this.ref = this.ref.bind(this);
+    this.onSeekEnd = this.onSeekEnd.bind(this);
+    this.seeking = this.seeking.bind(this);
+    this.updateProgress = this.updateProgress.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({currentSong: nextProps.currentSong,
-                  playbackData: nextProps.playbackData});
+  componentWillRecieveProps(nextProps) {
+    this.setState
+  }
+
+  updateProgress(p){
+    this.props.updateProgress(p);
+    if (!this.state.seeking) {
+      this.setState({progress: p.played});
+    }
+  }
+
+  onSeekEnd() {
+    this.player.seekTo(this.state.progress);
+    this.setState({ seeking: false });
+  }
+
+  seeking(value) {
+    this.setState({ progress: value, seeking: true });
   }
 
   setVolume(volume) {
@@ -30,9 +42,9 @@ class Player extends React.Component {
   }
 
   render() {
-    const { playing, volume, progress, duration } = this.state.playbackData;
+    const { playing, volume, progress, duration } = this.props.playbackData;
     const { playSong, togglePause, setVolume, updateProgress, setDuration } = this.props
-    const currentSong = this.state.currentSong;
+    const currentSong = this.props.currentSong;
     const playButton = (this.props.playbackData.playing) ?
                         <i className="fa fa-pause" aria-hidden="true"></i> :
                         <i className="fa fa-play" aria-hidden="true"></i>;
@@ -49,20 +61,23 @@ class Player extends React.Component {
               </button>
             </div>
 
-
             <FormattedTime numSeconds={progress.playedSeconds}
               className="elapsed"/>
 
-            <div className="progress-bar-container">
-              <ProgressBar
-                totalTime={duration}
-                currentTime={progress.playedSeconds}
-                isSeekable={true}
-                onSeek={time => updateProgress(time)}
-                onSeekStart={time => this.setState(() => ({ lastSeekStart: time }))}
-                onSeekEnd={time => this.player.seekTo(time)}
-                onIntent={time => this.setState(() => ({ lastIntent: time }))} />
-            </div>
+              <div className="slider-background">
+                <input
+                  className="slider"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.0001"
+                  value={this.state.progress}
+                  onInput={e => this.seeking(parseFloat(e.target.value))}
+                  onMouseUp={() => this.onSeekEnd()}
+                  />
+                <div className="slider-progress" style={{ width: `${this.state.progress * 100}%` }}>
+                </div>
+              </div>
 
             <FormattedTime numSeconds={duration}
               className="duration" />
@@ -86,7 +101,7 @@ class Player extends React.Component {
               progressFrequency={50}
               playing={playing}
               onDuration={(d) => setDuration(d)}
-              onProgress={(p) => updateProgress(p)}
+              onProgress={(p) => this.updateProgress(p)}
               volume={volume}
               height={0}
               width={0}/>

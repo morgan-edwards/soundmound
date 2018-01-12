@@ -27,3 +27,67 @@
   border-color: $orange;
   color: $orange;
 }
+
+//PROGRESS SLIDER
+
+$slider-width: 2px;
+.slider {
+    -webkit-appearance: none;
+    z-index: 20;
+    width: 100%;
+    height: $slider-width;
+    border-radius: 5px;
+    background: none;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    opacity: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    width: $slider-width;
+    height: $slider-width;
+    border-radius: 50%;
+    background: $orange;
+    transition: .1s;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    width: 10px;
+    height: 10px;
+}
+
+.slider::-moz-range-thumb {
+  opacity: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  width: $slider-width;
+  height: $slider-width;
+  border-radius: 50%;
+  background: $orange;
+  transition: .1s;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: $slider-width;
+  height: $slider-width;
+}
+
+.slider-background {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0 15px;
+  background-color: $gray;
+  position: relative;
+  height: $slider-width;
+}
+
+.slider-progress {
+    height: $slider-width;
+    position: absolute;
+    background-color: $orange;
+    bottom: 0px;
+}
