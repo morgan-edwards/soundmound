@@ -59,7 +59,7 @@ class UserProfile extends React.Component {
 
             <nav className="user-subnav">
               <ul className="subnav-left">
-                <li>{`${name} sounds`}</li>
+                <li>{`${name}'s sounds`}</li>
               </ul>
               <div className="subnav-right">
                 {rightButton}

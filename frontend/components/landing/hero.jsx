@@ -29,7 +29,7 @@ const Hero = (props) => {
             <div className="hero-content">
               <h1>Connect on SoundMound</h1>
               <p>Discover, stream, and share some real tight music on a super
-                sick mound, ad-free, groundbreaking site mound of sound</p>
+                sick, ad-free, groundbreaking mound of sound</p>
               <button className="orange-btn"
                 onClick={() => props.login({username: "Guest", password: "password"})}>
                 Login as Guest
