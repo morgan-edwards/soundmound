@@ -35,7 +35,6 @@ export const receiveUser = payload => {
 export const receiveUsers = payload => {
   let users = {};
   let songs = {};
-
   payload.forEach((userAndSongs) => {
     const user = userAndSongs.user;
     users[user.id] = user;

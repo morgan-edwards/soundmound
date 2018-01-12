@@ -5,9 +5,9 @@ json.artist song.user.username
 json.trackUrl asset_path(song.track.url)
 json.playCount song.play_count
 json.createdAt song.created_at
-
-if song.image.url == "no-image"
+if song.image.url != "no-image"
   json.imageUrl asset_path(song.image.url)
 else
+  debugger
   json.imageUrl asset_path(song.user.image.url)
 end
