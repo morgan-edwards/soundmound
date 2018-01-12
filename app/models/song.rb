@@ -19,7 +19,7 @@ class Song < ApplicationRecord
   belongs_to :user,
     touch: true
 
-  has_attached_file :image, default_url: "user_default.jpg"
+  has_attached_file :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_attached_file :track
@@ -35,10 +35,6 @@ class Song < ApplicationRecord
 
   def artist
     self.user.username
-  end
-
-  def define_default_img
-    self.user.image.url
   end
 
 end
