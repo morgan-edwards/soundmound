@@ -19,10 +19,10 @@ class Song < ApplicationRecord
   belongs_to :user,
     touch: true
 
-  has_attached_file :image, default_url: "no_image"
+  has_attached_file :image, default_url: "user_default"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :track, default_url: "default_track.mp3"
+  has_attached_file :track
   validates_attachment_content_type :track,
     content_type: ['audio/mpeg', 'audio/mp3'],
     file_name: { matches: [/mp3\Z/] }

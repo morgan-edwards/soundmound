@@ -63,19 +63,19 @@ class UserNavBar extends React.Component {
               </NavLink>
             </li>
             <li>
-              <button className="navbar-user-btn">
+              <NavLink to={`/artists/${currentUser.id}`}
+                        className="navbar-user-btn">
                 <img src={currentUser.imageUrl} />
                 {`${currentUser.username}`}
                 <span className="dropdown-icon">
-                  <i className="fa fa-chevron-down" aria-hidden="true"></i>
                 </span>
-              </button>
+              </NavLink>
             </li>
             <li>
               <button className="options-btn"
                 onClick={this.logoutRedirect}>
                 <span className="options-icon">
-                  <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
+                  Logout
                 </span>
               </button>
             </li>

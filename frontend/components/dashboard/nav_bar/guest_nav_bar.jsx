@@ -45,6 +45,12 @@ class GuestNavBar extends React.Component {
         <nav className="navbar-right flex-nav">
           <ul className="nav-links-right">
             <li>
+              <NavLink to={`/upload`}
+                activeClassName="selected">
+                Upload
+              </NavLink>
+            </li>
+            <li>
               <button onClick={this.loginRedirect}
                 className="nav-btn dark-nav-btn"
                 onClick={() => toggleModal('login')}>
@@ -56,20 +62,6 @@ class GuestNavBar extends React.Component {
                 className="nav-btn orange-nav-btn"
                 onClick={() => toggleModal('signup')}>
                 Create account
-              </button>
-            </li>
-            <li>
-              <NavLink to={`/upload`}
-                activeClassName="selected">
-                Upload
-              </NavLink>
-            </li>
-            <li>
-              <button className="options-btn"
-                onClick={this.logoutRedirect}>
-                <span className="options-icon">
-                  <i className="fa fa-ellipsis-h" aria-hidden="true"></i>
-                </span>
               </button>
             </li>
           </ul>
