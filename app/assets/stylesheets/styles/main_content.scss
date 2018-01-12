@@ -28,9 +28,10 @@
   padding: 30px;
   width: 100%;
   height: 260px;
-  background: linear-gradient(135deg, #587476, #587476 50%, #D1BCD6);
+  background-image: linear-gradient(135deg, #587476, #587476 50%, #D1BCD6);
   background-size: 100%;
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .user-image-frame {

@@ -90,7 +90,7 @@ class EditProfile extends React.Component {
   }
 
   render() {
-    const background = (this.state.bannerUrl) ? { "background": `url(${this.state.bannerUrl})`,
+    const background = (this.state.bannerUrl) ? { "backgroundImage": `url(${this.state.bannerUrl})`,
                                                   "backgroundSize": "100%",
                                                   "backgroundPosition": "center center",
                                                   "backgroundRepeat": "no-repeat",

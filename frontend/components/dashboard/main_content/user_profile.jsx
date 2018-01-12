@@ -38,7 +38,7 @@ class UserProfile extends React.Component {
         const name = (currentUser &&  userId === this.props.currentUser.id) ?
                           "Your" : `${this.props.user.username}'s`;
 
-        const background = (backgroundUrl) ? { "background": `url(${backgroundUrl})`,
+        const background = (backgroundUrl) ? { "backgroundImage": `url(${backgroundUrl})`,
                                                 "backgroundSize": "100%",
                                                 "backgroundPosition": "center center",
                                                 "backgroundRepeat": "no-repeat",
