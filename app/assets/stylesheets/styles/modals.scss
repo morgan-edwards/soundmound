@@ -68,6 +68,20 @@
 .session-container {
   width: 450px;
   height: 300px;
+  display: flex;
+  justify-content: center;
+
+  .modal-form {
+    display: flex;
+    width: 80%;
+    align-self: center;
+
+    button {
+      border-radius: 5px;
+      color: white;
+      font-size: 24px;
+    }
+  }
 }
 
 .form-button {

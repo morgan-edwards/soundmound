@@ -31,7 +31,7 @@ class SongListItem extends React.Component {
         <button onClick={this.openEditModal}>
           Edit
         </button> :
-        <button>LIKE</button> ;
+        <div></div>;
 
     return (
       <li key={song.id}

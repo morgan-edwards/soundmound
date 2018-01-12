@@ -89,6 +89,10 @@
 .song-list-item {
   display: flex;
   padding: 23px 30px;
+
+  .waveform {
+    height: 75px;
+  }
 }
 
 .song-list-artwork {
@@ -130,6 +134,11 @@
   width: 36px;
   padding: 0;
   margin: 0 6px 0 0;
+
+  button {
+    width: 36px;
+    text-align: center;
+  }
 }
 
 .list-play:hover {
