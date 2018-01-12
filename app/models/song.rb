@@ -19,7 +19,7 @@ class Song < ApplicationRecord
   belongs_to :user,
     touch: true
 
-  has_attached_file :image, default_url: "user_default"
+  has_attached_file :image, default_url: "user_default.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_attached_file :track
