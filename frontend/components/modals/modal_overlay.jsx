@@ -62,9 +62,7 @@ class ModalOverlay extends React.Component {
                   className="close-button">
             <i onClick={this.closeModal} className="fa fa-times fa-lg" aria-hidden="true"></i>
           </button>
-          <div>
-            {modalContent}
-          </div>
+          {modalContent}
         </div>
       );
     }
