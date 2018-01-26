@@ -2,7 +2,7 @@ import {
   RECEIVE_SESSION_ERRORS,
   RECEIVE_CURRENT_USER,
 } from '../actions/session_actions';
-import { TOGGLE_SESSION_MODAL } from '../actions/ui_actions';
+import { TOGGLE_MODAL } from '../actions/ui_actions';
 
 export default (state = [], action) => {
   Object.freeze(state);
@@ -11,7 +11,7 @@ export default (state = [], action) => {
       return action.errors;
     case RECEIVE_CURRENT_USER:
       return [];
-    case TOGGLE_SESSION_MODAL:
+    case TOGGLE_MODAL:
       return [];
     default:
       return state;
