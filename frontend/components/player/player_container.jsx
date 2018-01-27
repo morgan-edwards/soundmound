@@ -11,6 +11,7 @@ import Player from './player';
 const mapStateToProps = state => {
   const currentSong = state.entities.songs[state.ui.playback.currentlyPlayingId];
   const playbackData = state.ui.playback;
+  console.log(currentSong);
   return {
     currentSong,
     playbackData

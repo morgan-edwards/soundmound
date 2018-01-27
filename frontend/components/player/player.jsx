@@ -5,18 +5,31 @@ import { ProgressBar, VolumeSlider, FormattedTime } from 'react-player-controls'
 class Player extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { progress: this.props.playbackData.progress.played };
+    this.state = {
+      progress: this.props.playbackData.progress.played,
+    };
     this.setVolume = this.setVolume.bind(this);
     this.ref = this.ref.bind(this);
     this.onSeekEnd = this.onSeekEnd.bind(this);
     this.seeking = this.seeking.bind(this);
     this.updateProgress = this.updateProgress.bind(this);
+    this.playNext = this.playNext.bind(this);
   }
 
   updateProgress(p){
     this.props.updateProgress(p);
     if (!this.state.seeking) {
       this.setState({progress: p.played});
+    }
+  }
+
+  playNext(current, queue) {
+    const nextId = queue.indexOf(current) + 1;
+    if (queue[nextId]) {
+      this.props.playSong(queue[nextId]);
+    } else {
+      this.props.togglePause();
+      this.props.updateProgress(0);
     }
   }
 
@@ -38,9 +51,8 @@ class Player extends React.Component {
   }
 
   render() {
-    const { playing, volume, progress, duration } = this.props.playbackData;
-    const { playSong, togglePause, setVolume, updateProgress, setDuration } = this.props
-    const currentSong = this.props.currentSong;
+    const { playing, volume, progress, duration, songQueue } = this.props.playbackData;
+    const { togglePause, setVolume, updateProgress, setDuration } = this.props
     const playButton = (this.props.playbackData.playing) ?
                         <i className="fa fa-pause" aria-hidden="true"></i> :
                         <i className="fa fa-play" aria-hidden="true"></i>;
@@ -92,21 +104,22 @@ class Player extends React.Component {
               </button>
             </div>
 
-            <ReactPlayer url={currentSong.trackUrl}
+            <ReactPlayer url={this.props.currentSong.trackUrl}
               ref={this.ref}
               progressFrequency={50}
               playing={playing}
               onDuration={(d) => setDuration(d)}
               onProgress={(p) => this.updateProgress(p)}
+              onEnded={() => this.playNext(this.props.currentSong.id, songQueue)}
               volume={volume}
               height={0}
               width={0}/>
 
           <div className="player-song-details">
-            <img className="player-art" src={currentSong.imageUrl} />
+            <img className="player-art" src={this.props.currentSong.imageUrl} />
             <div className="player-info">
-              <div className="artist-name">{currentSong.artist}</div>
-              <div className="song-name">{currentSong.title.slice(0,35)}</div>
+              <div className="artist-name">{this.props.currentSong.artist}</div>
+              <div className="song-name">{this.props.currentSong.title.slice(0,35)}</div>
             </div>
           </div>
         </div>

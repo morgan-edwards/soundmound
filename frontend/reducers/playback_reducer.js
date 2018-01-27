@@ -5,6 +5,7 @@ import { PLAY_SONG,
   SET_VOLUME,
   UPDATE_PROGRESS,
   SET_DURATION,
+  SET_QUEUE,
  } from '../actions/playback_actions';
 
 const _defaultPlayback = Object.freeze({
@@ -15,6 +16,7 @@ const _defaultPlayback = Object.freeze({
   muted: false,
   progress: 0,
   duration: 0,
+  songQueue: [],
 });
 
 const playbackReducer = (state = _defaultPlayback, action) => {
@@ -42,6 +44,10 @@ const playbackReducer = (state = _defaultPlayback, action) => {
     case SET_DURATION:
       newState = merge({}, state);
       newState.duration = action.duration;
+      return newState;
+    case SET_QUEUE:
+      newState = merge({}, state);
+      newState.songQueue = action.queue;
       return newState;
     default:
       return state;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import SongList from './song_list';
+import SongListContainer from './song_list_container';
 import SidebarContainer from './sidebar_container';
 import LoadingAnimation from './loading_animation';
 import FollowButtonContainer from '../buttons/follow_button_container';
@@ -67,7 +67,7 @@ class UserProfile extends React.Component {
             </nav>
 
             <section className="user-info">
-              <SongList user={this.props.user}
+              <SongListContainer user={this.props.user}
                 songs={this.props.songs} />
 
               <SidebarContainer user={this.props.user} />

@@ -3,6 +3,7 @@ export const TOGGLE_PAUSE = 'TOGGLE_PAUSE';
 export const SET_VOLUME = 'SET_VOLUME';
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS';
 export const SET_DURATION = 'SET_DURATION';
+export const SET_QUEUE = 'SET_QUEUE';
 
 export const playSong = songId => {
   return {
@@ -35,5 +36,14 @@ export const setDuration = (duration) => {
   return {
     type: SET_DURATION,
     duration
+  };
+};
+
+export const setQueue = (songs) => {
+  return {
+    type: SET_QUEUE,
+    queue: songs.map(s => {
+      if (s) return s.id;
+    })
   };
 };

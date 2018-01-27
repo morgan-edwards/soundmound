@@ -4,6 +4,13 @@ import SongListItemContainer from './song_list_item_container';
 class SongList extends React.Component {
   constructor(props) {
     super(props);
+    this.props.setQueue(this.props.songs);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (`${this.props.songs}` !== `${nextProps.songs}`) {
+      this.props.setQueue(nextProps.songs);
+    }
   }
 
   render() {
