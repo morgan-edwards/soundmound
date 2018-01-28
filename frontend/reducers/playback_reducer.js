@@ -44,6 +44,7 @@ const playbackReducer = (state = _defaultPlayback, action) => {
     case SET_DURATION:
       newState = merge({}, state);
       newState.duration = action.duration;
+      newState.seeking = false;
       return newState;
     case SET_QUEUE:
       newState = merge({}, state);

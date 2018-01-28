@@ -1,23 +1,22 @@
 import { connect } from 'react-redux';
-
 import {
   updateProgress,
+  seeking,
+  seekEnd,
 } from '../../../actions/playback_actions';
-
 import ProgressBar from './progress_bar';
 
 
-const mapStateToProps = (state, ownProps) => {
-  const song = ownProps.song;
-  const currentlyPlayingId = state.ui.playback.currentlyPlayingId;
-  const progress = (state.ui.playback.progress.played) ?
-                    (state.ui.playback.progress.played * 100).toString() + "%" :
-                    "0%";
-  return { progress, currentlyPlayingId };
+const mapStateToProps = (state) => {
+  const playbackData = state.ui.playback;
+  return {playbackData };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    seeking: (prog) => dispatch(seeking(prog)),
+    seekEnd: (prog) => dispatch(seekEnd(prog)),
+    updateProgress: (prog) => dispatch(updateProgress(prog)),
   };
 };
 

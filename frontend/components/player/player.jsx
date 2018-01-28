@@ -16,6 +16,17 @@ class Player extends React.Component {
     this.playNext = this.playNext.bind(this);
   }
 
+  componentWillReceiveProps({ playbackData }) {
+    if (playbackData.currentlyPlayingId === this.props.playbackData.currentlyPlayingId) {
+      const diff = Math.abs(
+        (playbackData.progress * playbackData.duration) - this.props.playbackData.progress.playedSeconds
+      );
+      if (diff >= 1) {
+        this.player.seekTo(playbackData.progress);
+      }
+    }
+  }
+
   updateProgress(p){
     this.props.updateProgress(p);
     if (!this.state.seeking) {

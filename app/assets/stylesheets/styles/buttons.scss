@@ -74,7 +74,7 @@ $slider-width: 3px;
   cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
+.slider::-moz-range-thumb:hover {
   width: 10px;
   height: 10px;
 }
@@ -94,4 +94,63 @@ $slider-width: 3px;
     position: absolute;
     background-color: $orange;
     bottom: 0px;
+}
+
+//UI PROGRESS BAR COMPONENT
+
+.progress-bar {
+  $slider-height: 50px;
+  position: relative;
+
+  .pg-slider {
+      cursor: pointer;
+      -webkit-appearance: none;
+      z-index: 20;
+      width: 100%;
+      height: $slider-height;
+      border-radius: 5px;
+      background: none;
+      outline: none;
+  }
+
+  .pg-slider::-webkit-slider-thumb {
+      opacity: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      box-sizing: border-box;
+      width: 1px;
+      height: $slider-height;
+      background: $orange;
+      cursor: pointer;
+  }
+
+  .pg-slider::-moz-range-thumb {
+    width: 1px;
+    height: $slider-height;
+    opacity: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    width: $slider-height;
+    height: $slider-height;
+    cursor: pointer;
+  }
+
+  .slider-background {
+    height: $slider-height;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .slider-progress {
+    height: $slider-height;
+  }
+
+  .time-holder {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
 }
