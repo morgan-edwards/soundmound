@@ -34,10 +34,13 @@ class Player extends React.Component {
     }
   }
 
-  playNext(current, queue) {
+  playNext(current) {
+    const queue = this.props.playbackData.songQueue;
     const nextId = queue.indexOf(current) + 1;
     if (queue[nextId]) {
       this.props.playSong(queue[nextId]);
+    } else if (!queue.length < 1 && current !== queue[queue.length-1]) {
+      this.props.playSong(queue[0]);
     } else {
       this.props.togglePause();
       this.props.updateProgress(0);
@@ -62,7 +65,7 @@ class Player extends React.Component {
   }
 
   render() {
-    const { playing, volume, progress, duration, songQueue } = this.props.playbackData;
+    const { playing, volume, progress, duration } = this.props.playbackData;
     const { togglePause, setVolume, updateProgress, setDuration } = this.props
     const playButton = (this.props.playbackData.playing) ?
                         <i className="fa fa-pause" aria-hidden="true"></i> :
@@ -121,7 +124,7 @@ class Player extends React.Component {
               playing={playing}
               onDuration={(d) => setDuration(d)}
               onProgress={(p) => this.updateProgress(p)}
-              onEnded={() => this.playNext(this.props.currentSong.id, songQueue)}
+              onEnded={() => this.playNext(this.props.currentSong.id)}
               volume={volume}
               height={0}
               width={0}/>

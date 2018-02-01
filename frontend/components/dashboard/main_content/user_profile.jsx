@@ -68,7 +68,8 @@ class UserProfile extends React.Component {
 
             <section className="user-info">
               <SongListContainer user={this.props.user}
-                songs={this.props.songs} />
+                songs={this.props.songs}
+                source={this.props.userId}/>
 
               <SidebarContainer user={this.props.user} />
             </section>

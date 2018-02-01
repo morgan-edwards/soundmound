@@ -22,9 +22,11 @@ class Stream extends React.Component {
   render() {
     const content = (this.state.view === "suggested") ?
       <SongListContainer user={this.props.currentUser}
-        songs={this.props.suggestedSongs} /> :
+        songs={this.props.suggestedSongs}
+        source={this.props.suggestedSongs[0]} /> :
       <SongListContainer user={this.props.currentUser}
-        songs={this.props.followedSongs} />;
+        songs={this.props.followedSongs}
+        source={this.props.followedSongs[0]}/>;
 
     return (
       <div className="stream">

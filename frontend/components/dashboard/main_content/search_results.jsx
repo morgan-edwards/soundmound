@@ -17,8 +17,8 @@ const SearchResults = ({songs, query}) => {
       </nav>
 
       <SongListContainer user={0}
-        songs={songs} />
-
+        songs={songs}
+        source={title} />
     </div>
   );
 };

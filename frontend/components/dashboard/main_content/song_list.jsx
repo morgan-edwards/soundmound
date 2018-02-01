@@ -8,7 +8,7 @@ class SongList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (`${this.props.songs}` !== `${nextProps.songs}`) {
+    if (this.props.source !== nextProps.source) {
       this.props.setQueue(nextProps.songs);
     }
   }

@@ -5,7 +5,8 @@ import { setQueue } from '../../../actions/playback_actions';
 const mapStateToProps = (state, ownProps) => {
   const user = ownProps.user;
   const songs = ownProps.songs;
-  return { user, songs };
+  const source = ownProps.source;
+  return { user, songs, source };
 };
 
 const mapDispatchToProps = dispatch => {
